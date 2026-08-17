@@ -36,6 +36,7 @@ function SmartisaCeremony() {
   const holdFrame = useRef<number | null>(null);
   const holdStartedAt = useRef<number | null>(null);
   const holdActive = useRef(false);
+  const lastHoldSoundStep = useRef(0);
 
   const burst = useCallback((x: number, y: number, amount: number, firework = false) => {
     const colors = [RED, GOLD, WHITE, '#a80f17'];
@@ -58,7 +59,7 @@ function SmartisaCeremony() {
     }
   }, []);
 
-  const sound = useCallback((finale = false) => {
+  const sound = useCallback((finale = false, pitchMultiplier = 1) => {
     try {
       const browserWindow = window as typeof window & {
         webkitAudioContext?: typeof AudioContext;
@@ -69,17 +70,55 @@ function SmartisaCeremony() {
       const context = audioContext.current;
       if (context.state === 'suspended') void context.resume();
       const now = context.currentTime;
-      const oscillator = context.createOscillator();
-      const gain = context.createGain();
-      oscillator.type = finale ? 'sine' : 'triangle';
-      oscillator.frequency.setValueAtTime(finale ? 110 : 74, now);
-      oscillator.frequency.exponentialRampToValueAtTime(finale ? 880 : 42, now + (finale ? 2.2 : 0.7));
-      gain.gain.setValueAtTime(0.001, now);
-      gain.gain.exponentialRampToValueAtTime(finale ? 0.25 : 0.5, now + 0.02);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + (finale ? 2.6 : 0.9));
-      oscillator.connect(gain).connect(context.destination);
-      oscillator.start(now);
-      oscillator.stop(now + (finale ? 2.7 : 1));
+      const voices = finale
+        ? [
+            { frequency: 261.63, delay: 0, peak: 0.16 },
+            { frequency: 329.63, delay: 0.12, peak: 0.14 },
+            { frequency: 392, delay: 0.24, peak: 0.14 },
+            { frequency: 523.25, delay: 0.38, peak: 0.13 },
+            { frequency: 659.25, delay: 0.52, peak: 0.12 },
+            { frequency: 783.99, delay: 0.68, peak: 0.1 },
+          ]
+        : [
+            { frequency: 74, delay: 0, peak: 0.3 },
+            { frequency: 148, delay: 0, peak: 0.12 },
+            { frequency: 222, delay: 0.08, peak: 0.08 },
+          ];
+      voices.forEach(({ frequency, delay, peak }, index) => {
+        const oscillator = context.createOscillator();
+        const gain = context.createGain();
+        const startAt = now + delay;
+        const duration = finale ? 1.45 : 0.55;
+        oscillator.type = finale ? (index % 2 === 0 ? 'sine' : 'triangle') : index === 0 ? 'triangle' : 'sine';
+        oscillator.frequency.setValueAtTime(frequency * pitchMultiplier, startAt);
+        oscillator.frequency.exponentialRampToValueAtTime(frequency * pitchMultiplier * (finale ? 1.02 : 0.82), startAt + duration * 0.82);
+        gain.gain.setValueAtTime(0.001, startAt);
+        gain.gain.exponentialRampToValueAtTime(peak, startAt + 0.025);
+        gain.gain.exponentialRampToValueAtTime(0.001, startAt + duration);
+        oscillator.connect(gain).connect(context.destination);
+        oscillator.start(startAt);
+        oscillator.stop(startAt + duration);
+      });
+      if (finale) {
+        const bufferLength = Math.floor(context.sampleRate * 1.4);
+        const noiseBuffer = context.createBuffer(1, bufferLength, context.sampleRate);
+        const noiseData = noiseBuffer.getChannelData(0);
+        for (let index = 0; index < bufferLength; index += 1) {
+          noiseData[index] = (Math.random() * 2 - 1) * (1 - index / bufferLength);
+        }
+        const noise = context.createBufferSource();
+        const filter = context.createBiquadFilter();
+        const noiseGain = context.createGain();
+        filter.type = 'highpass';
+        filter.frequency.setValueAtTime(900, now);
+        noiseGain.gain.setValueAtTime(0.001, now);
+        noiseGain.gain.exponentialRampToValueAtTime(0.13, now + 0.03);
+        noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 1.4);
+        noise.buffer = noiseBuffer;
+        noise.connect(filter).connect(noiseGain).connect(context.destination);
+        noise.start(now);
+        noise.stop(now + 1.4);
+      }
     } catch {
       // Audio is optional; a restricted browser must not block the launch state.
     }
@@ -104,6 +143,7 @@ function SmartisaCeremony() {
     }
     launched.current = false;
     cancelHold();
+    lastHoldSoundStep.current = 0;
     setState('standby');
     setCount(3);
     setFlash(false);
@@ -149,12 +189,19 @@ function SmartisaCeremony() {
     if (holdActive.current || launched.current || state !== 'standby') return;
     holdActive.current = true;
     holdStartedAt.current = performance.now();
+    lastHoldSoundStep.current = 0;
     setHoldProgress(0);
+    sound(false, 0.9);
 
     const tick = (now: number) => {
       if (!holdActive.current || holdStartedAt.current === null) return;
       const progress = Math.min(((now - holdStartedAt.current) / HOLD_DURATION_MS) * 100, 100);
       setHoldProgress(progress);
+      const soundStep = Math.floor(progress / 10);
+      if (soundStep > lastHoldSoundStep.current && soundStep < 10) {
+        lastHoldSoundStep.current = soundStep;
+        sound(false, 1 + soundStep * 0.08);
+      }
       if (progress >= 100) {
         holdActive.current = false;
         holdStartedAt.current = null;

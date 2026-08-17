@@ -19,7 +19,7 @@ type Particle = {
 const RED = '#d71920';
 const GOLD = '#e6b95a';
 const WHITE = '#f8f6ef';
-const HOLD_DURATION_MS = 10_000;
+const HOLD_DURATION_MS = 5_000;
 
 function SmartisaCeremony() {
   const [state, setState] = useState<CeremonyState>('standby');
@@ -36,6 +36,8 @@ function SmartisaCeremony() {
   const holdActive = useRef(false);
   const countdownContext = useRef<AudioContext | null>(null);
   const lastCountdownSecond = useRef<number | null>(null);
+  const mediaAudioSource = useRef<MediaElementAudioSourceNode | null>(null);
+  const mediaAudioGain = useRef<GainNode | null>(null);
 
   const burst = useCallback((x: number, y: number, amount: number, firework = false) => {
     const colors = [RED, GOLD, WHITE, '#a80f17'];
@@ -86,13 +88,13 @@ function SmartisaCeremony() {
     const isFinalCount = secondsRemaining <= 3;
     const startAt = context.currentTime;
     const duration = isFinalCount ? 0.16 : 0.1;
-    const frequency = (isFinalCount ? 720 : 460) + (10 - secondsRemaining) * 16;
+    const frequency = (isFinalCount ? 720 : 460) + (5 - secondsRemaining) * 24;
 
     oscillator.type = isFinalCount ? 'square' : 'sine';
     oscillator.frequency.setValueAtTime(frequency, startAt);
     oscillator.frequency.exponentialRampToValueAtTime(frequency * 0.72, startAt + duration);
     gain.gain.setValueAtTime(0.0001, startAt);
-    gain.gain.exponentialRampToValueAtTime(isFinalCount ? 0.12 : 0.08, startAt + 0.012);
+    gain.gain.exponentialRampToValueAtTime(isFinalCount ? 0.3 : 0.2, startAt + 0.012);
     gain.gain.exponentialRampToValueAtTime(0.0001, startAt + duration);
     oscillator.connect(gain);
     gain.connect(context.destination);
@@ -105,6 +107,20 @@ function SmartisaCeremony() {
     const context = getCountdownContext();
     if (context?.state === 'suspended') void context.resume();
     if (!audio) return;
+    audio.volume = 1;
+    if (context && !mediaAudioSource.current) {
+      try {
+        const source = context.createMediaElementSource(audio);
+        const gain = context.createGain();
+        gain.gain.value = 1.8;
+        source.connect(gain);
+        gain.connect(context.destination);
+        mediaAudioSource.current = source;
+        mediaAudioGain.current = gain;
+      } catch {
+        // The direct audio path remains available if the browser disallows routing.
+      }
+    }
     audio.muted = true;
     audio.currentTime = 0;
     const unlock = audio.play();
@@ -157,8 +173,8 @@ function SmartisaCeremony() {
     holdStartedAt.current = performance.now();
     setHoldProgress(0);
     prepareAudio();
-    playCountdownTick(10);
-    lastCountdownSecond.current = 10;
+    playCountdownTick(5);
+    lastCountdownSecond.current = 5;
 
     const tick = (now: number) => {
       if (!holdActive.current || holdStartedAt.current === null) return;
@@ -331,11 +347,11 @@ function SmartisaCeremony() {
                   cancelHold();
                 }
               }}
-              aria-label="Tahan untuk meluncurkan Smartisa selama 10 detik"
+              aria-label="Tahan untuk meluncurkan Smartisa selama 5 detik"
               data-testid="button-launch"
             >
               <span>LUNCURKAN</span>
-              <small>TAHAN 10 DETIK</small>
+              <small>TAHAN 5 DETIK</small>
             </button>
           </div>
         )}

@@ -1,0 +1,39 @@
+Create a majestic, high-end web application for a formal national event launch ceremony (HUT RI ke-81 Kemerdekaan Republik Indonesia). 
+
+The application is a Touchscreen Launching Screen for a new application named "Smartisa".
+
+### Visual Theme & Design:
+1. Color Palette: Royal Red, Elegant Gold, Crisp White, and Deep Dark Charcoal background (#0d0d11).
+2. Atmosphere: Cinematic, formal, premium, nationalistic, and technologically advanced.
+3. Typography: Clean, bold serif or modern sans-serif fonts (e.g., Montserrat, Playfair Display, or Cinzel).
+
+### Application States & Workflow:
+
+#### State 1: Standby Screen (Initial State)
+- Background: Subtle animated glowing particles (red & white/gold) floating slowly, or a smooth pulsing radial background.
+- Header: Text "PELUNCURAN RESMI APLIKASI SMARTISA" with "HUT KEMERDEKAAN RI KE-81" badge/subheading at the top.
+- Center Element: A large, elegant glowing launch button (round or sleek modern emblem style) with gold borders and a subtle pulse effect. Inside or under the button text: "TOUCH TO LAUNCH" / "SENTUH UNTUK MERESMIKAN".
+- Audio: Subtle ambient background sound (optional/muted by default, but ready for interaction).
+
+#### State 2: Trigger / Interaction (On Touch / Click / Spacebar Press)
+- Trigger on both Touch/Click on the launch button AND keyboard "Spacebar" (as a backup for the operator).
+- Hide the mouse cursor automatically using CSS (`cursor: none;`).
+- Play an explosive cinematic sound effect (synthesize using Web Audio API or load a crisp cinematic impact sound).
+- Visual Effect: A dynamic full-screen particle shockwave explosion radiating outward from the touch point or center, featuring glowing Red, White, and Gold particles.
+
+#### State 3: Launch Sequence (3 Seconds Duration)
+- A brief dramatic flash / lightning effect.
+- Animated 3D/2D text scaling up in the center: "SMARTISA RESMI DILUNCURKAN".
+- Celebration effect: Golden confetti and red-white fireworks particles bursting across the screen continuously.
+
+#### State 4: Grand Finale Screen
+- Show a polished mockup card / showcase container featuring:
+  - App Name: "SMARTISA"
+  - Tagline: "Solusi Cerdas untuk Indonesia Maju" (or customizable placeholder)
+  - Interactive "Replay / Reset" hidden button (e.g., pressing key 'R' or clicking top-right corner) to reset back to Standby State for rehearsal.
+
+### Technical & UX Requirements:
+- Pure HTML, CSS (using Canvas for particle explosion effects), and vanilla JavaScript (or lightweight animation libraries like GSAP / Canvas API).
+- Fully responsive and optimized for Fullscreen mode (16:9 1080p and 4K displays).
+- No external heavy dependencies that require complex server setups — pure static web app (can be served via simple Express or Vite in Replit).
+- Smooth 60fps animations for particles.

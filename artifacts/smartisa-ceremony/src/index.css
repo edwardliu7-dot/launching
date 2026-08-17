@@ -249,6 +249,19 @@ button { font: inherit; }
   animation-delay: 1.1s;
   opacity: .4;
 }
+.ceremony-progress-ring {
+  position: absolute;
+  z-index: 0;
+  width: 104%;
+  height: 104%;
+  border-radius: 50%;
+  padding: 3px;
+  transition: background .1s linear;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
 .ceremony-launch {
   position: relative;
   z-index: 1;

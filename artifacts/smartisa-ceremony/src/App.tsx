@@ -19,11 +19,13 @@ type Particle = {
 const RED = '#d71920';
 const GOLD = '#e6b95a';
 const WHITE = '#f8f6ef';
+const HOLD_DURATION_MS = 10_000;
 
 function SmartisaCeremony() {
   const [state, setState] = useState<CeremonyState>('standby');
   const [count, setCount] = useState(3);
   const [flash, setFlash] = useState(false);
+  const [holdProgress, setHoldProgress] = useState(0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particles = useRef<Particle[]>([]);
   const animationFrame = useRef<number | null>(null);
@@ -31,6 +33,9 @@ function SmartisaCeremony() {
   const launched = useRef(false);
   const timers = useRef<number[]>([]);
   const countdownInterval = useRef<number | null>(null);
+  const holdFrame = useRef<number | null>(null);
+  const holdStartedAt = useRef<number | null>(null);
+  const holdActive = useRef(false);
 
   const burst = useCallback((x: number, y: number, amount: number, firework = false) => {
     const colors = [RED, GOLD, WHITE, '#a80f17'];
@@ -80,6 +85,16 @@ function SmartisaCeremony() {
     }
   }, []);
 
+  const cancelHold = useCallback(() => {
+    holdActive.current = false;
+    holdStartedAt.current = null;
+    if (holdFrame.current !== null) {
+      window.cancelAnimationFrame(holdFrame.current);
+      holdFrame.current = null;
+    }
+    setHoldProgress(0);
+  }, []);
+
   const reset = useCallback(() => {
     timers.current.forEach((timer) => window.clearTimeout(timer));
     timers.current = [];
@@ -88,11 +103,12 @@ function SmartisaCeremony() {
       countdownInterval.current = null;
     }
     launched.current = false;
+    cancelHold();
     setState('standby');
     setCount(3);
     setFlash(false);
     particles.current = [];
-  }, []);
+  }, [cancelHold]);
 
   const launch = useCallback(() => {
     if (launched.current || state !== 'standby') return;
@@ -129,6 +145,29 @@ function SmartisaCeremony() {
     timers.current.push(intervalStopTimer);
   }, [burst, sound, state]);
 
+  const beginHold = useCallback(() => {
+    if (holdActive.current || launched.current || state !== 'standby') return;
+    holdActive.current = true;
+    holdStartedAt.current = performance.now();
+    setHoldProgress(0);
+
+    const tick = (now: number) => {
+      if (!holdActive.current || holdStartedAt.current === null) return;
+      const progress = Math.min(((now - holdStartedAt.current) / HOLD_DURATION_MS) * 100, 100);
+      setHoldProgress(progress);
+      if (progress >= 100) {
+        holdActive.current = false;
+        holdStartedAt.current = null;
+        holdFrame.current = null;
+        launch();
+        return;
+      }
+      holdFrame.current = window.requestAnimationFrame(tick);
+    };
+
+    holdFrame.current = window.requestAnimationFrame(tick);
+  }, [launch, state]);
+
   useEffect(() => {
     document.title = 'Smartisa | Peluncuran Resmi';
     const description = 'Official Smartisa launch ceremony.';
@@ -144,14 +183,26 @@ function SmartisaCeremony() {
   useEffect(() => {
     const keyHandler = (event: KeyboardEvent) => {
       if (event.key.toLowerCase() === 'r') reset();
+      if (event.code === 'Space' && !event.repeat) {
+        event.preventDefault();
+        beginHold();
+      }
+    };
+    const keyUpHandler = (event: KeyboardEvent) => {
+      if (event.code === 'Space') {
+        event.preventDefault();
+        cancelHold();
+      }
     };
     window.addEventListener('keydown', keyHandler);
+    window.addEventListener('keyup', keyUpHandler);
     document.body.style.cursor = state === 'standby' ? 'default' : 'none';
     return () => {
       window.removeEventListener('keydown', keyHandler);
+      window.removeEventListener('keyup', keyUpHandler);
       document.body.style.cursor = 'default';
     };
-  }, [launch, reset, state]);
+  }, [beginHold, cancelHold, reset, state]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -227,24 +278,47 @@ function SmartisaCeremony() {
           <>
             <h1 className="ceremony-title" data-testid="text-launch-title">PELUNCURAN RESMI APLIKASI SMARTISA</h1>
             <div className="ceremony-launch-wrap">
+              <div
+                className="ceremony-progress-ring"
+                role="progressbar"
+                aria-label="Progress peluncuran"
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-valuenow={Math.round(holdProgress)}
+                style={{ background: `conic-gradient(var(--ceremony-gold) ${holdProgress}%, rgba(230, 185, 90, .16) 0)` }}
+              />
               <button
                 className="ceremony-launch"
                 type="button"
                 onPointerDown={(event) => {
                   event.preventDefault();
-                  launch();
+                  event.currentTarget.setPointerCapture(event.pointerId);
+                  beginHold();
                 }}
-                onClick={launch}
+                onPointerUp={cancelHold}
+                onPointerCancel={cancelHold}
+                onLostPointerCapture={cancelHold}
                 onKeyDown={(event) => {
                   if (event.code === 'Space' || event.key === 'Enter') {
                     event.preventDefault();
+                    if (!event.repeat) beginHold();
                   }
                 }}
-                aria-label="Luncurkan Smartisa"
+                onKeyUp={(event) => {
+                  if (event.code === 'Space' || event.key === 'Enter') {
+                    event.preventDefault();
+                    cancelHold();
+                  }
+                }}
+                aria-label="Tahan untuk meluncurkan Smartisa selama 10 detik"
                 data-testid="button-launch"
               >
                 <span>LUNCURKAN</span>
               </button>
+            </div>
+            <div className="ceremony-hold-progress" aria-live="polite">
+              <div className="ceremony-hold-track"><span style={{ width: `${holdProgress}%` }} /></div>
+              <span>{holdProgress > 0 ? `${Math.round(holdProgress)}%` : 'TAHAN 10 DETIK'}</span>
             </div>
           </>
         )}

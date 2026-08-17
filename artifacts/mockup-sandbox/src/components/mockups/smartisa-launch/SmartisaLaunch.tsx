@@ -18,16 +18,21 @@ type Particle = {
 const RED = "#d71920";
 const GOLD = "#e6b95a";
 const WHITE = "#f8f6ef";
+const HOLD_DURATION_MS = 10_000;
 
 export function SmartisaLaunch() {
   const [state, setState] = useState<CeremonyState>("standby");
   const [count, setCount] = useState(3);
   const [flash, setFlash] = useState(false);
+  const [holdProgress, setHoldProgress] = useState(0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particles = useRef<Particle[]>([]);
   const raf = useRef<number | null>(null);
   const audio = useRef<AudioContext | null>(null);
   const launched = useRef(false);
+  const holdFrame = useRef<number | null>(null);
+  const holdStartedAt = useRef<number | null>(null);
+  const holdActive = useRef(false);
 
   const burst = useCallback((x: number, y: number, amount: number, firework = false) => {
     const colors = [RED, GOLD, WHITE, "#a80f17"];
@@ -62,13 +67,24 @@ export function SmartisaLaunch() {
     osc.stop(now + (finale ? 2.7 : 1));
   }, []);
 
+  const cancelHold = useCallback(() => {
+    holdActive.current = false;
+    holdStartedAt.current = null;
+    if (holdFrame.current !== null) {
+      window.cancelAnimationFrame(holdFrame.current);
+      holdFrame.current = null;
+    }
+    setHoldProgress(0);
+  }, []);
+
   const reset = useCallback(() => {
     launched.current = false;
+    cancelHold();
     setState("standby");
     setCount(3);
     setFlash(false);
     particles.current = [];
-  }, []);
+  }, [cancelHold]);
 
   const launch = useCallback(() => {
     if (launched.current || state !== "standby") return;
@@ -93,18 +109,52 @@ export function SmartisaLaunch() {
     }, 800);
   }, [burst, sound, state]);
 
+  const beginHold = useCallback(() => {
+    if (holdActive.current || launched.current || state !== "standby") return;
+    holdActive.current = true;
+    holdStartedAt.current = performance.now();
+    setHoldProgress(0);
+
+    const tick = (now: number) => {
+      if (!holdActive.current || holdStartedAt.current === null) return;
+      const progress = Math.min(((now - holdStartedAt.current) / HOLD_DURATION_MS) * 100, 100);
+      setHoldProgress(progress);
+      if (progress >= 100) {
+        holdActive.current = false;
+        holdStartedAt.current = null;
+        holdFrame.current = null;
+        launch();
+        return;
+      }
+      holdFrame.current = window.requestAnimationFrame(tick);
+    };
+
+    holdFrame.current = window.requestAnimationFrame(tick);
+  }, [launch, state]);
+
   useEffect(() => {
-    const key = (event: KeyboardEvent) => {
-      if (event.code === "Space") { event.preventDefault(); launch(); }
+    const keyDown = (event: KeyboardEvent) => {
+      if (event.code === "Space" && !event.repeat) {
+        event.preventDefault();
+        beginHold();
+      }
       if (event.key.toLowerCase() === "r") reset();
     };
-    window.addEventListener("keydown", key);
+    const keyUp = (event: KeyboardEvent) => {
+      if (event.code === "Space") {
+        event.preventDefault();
+        cancelHold();
+      }
+    };
+    window.addEventListener("keydown", keyDown);
+    window.addEventListener("keyup", keyUp);
     document.body.style.cursor = state === "standby" ? "default" : "none";
     return () => {
-      window.removeEventListener("keydown", key);
+      window.removeEventListener("keydown", keyDown);
+      window.removeEventListener("keyup", keyUp);
       document.body.style.cursor = "default";
     };
-  }, [launch, reset, state]);
+  }, [beginHold, cancelHold, reset, state]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -158,8 +208,8 @@ export function SmartisaLaunch() {
         .mark{display:flex;align-items:center;gap:10px;color:var(--gold);font-weight:700}.mark i{display:block;width:9px;height:9px;background:var(--red);transform:rotate(45deg);box-shadow:0 0 16px var(--red)}
         .replay{appearance:none;background:transparent;border:1px solid rgba(230,185,90,.4);color:var(--gold);padding:10px 14px;font:10px 'Space Mono',monospace;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .25s,border-color .25s}.replay:hover{background:rgba(230,185,90,.12);border-color:var(--gold)}
         .eyebrow{font:11px 'Space Mono',monospace;letter-spacing:.4em;color:var(--gold);margin-bottom:18px;animation:reveal .8s both}.title{font-family:'Playfair Display',serif;font-size:clamp(28px,4.5vw,58px);font-weight:500;letter-spacing:.02em;margin:0;animation:reveal .8s .12s both}.subtitle{font:12px 'Space Mono',monospace;letter-spacing:.34em;color:rgba(248,246,239,.52);margin:16px 0 44px;animation:reveal .8s .24s both}
-        .launch-wrap{position:relative;width:min(290px,68vw);height:min(290px,68vw);display:grid;place-items:center}.launch-wrap:before,.launch-wrap:after{content:"";position:absolute;border:1px solid rgba(230,185,90,.3);border-radius:50%;inset:4%;animation:ring 3s ease-out infinite}.launch-wrap:after{inset:-11%;animation-delay:1.1s;opacity:.4}
-        .launch{width:72%;height:72%;border-radius:50%;border:1px solid rgba(230,185,90,.8);background:radial-gradient(circle at 50% 42%,#ed2830 0,#aa1019 35%,#450a10 72%,#150c0f 100%);box-shadow:inset 0 0 35px rgba(255,210,135,.25),0 0 60px rgba(215,25,32,.25);color:var(--white);position:relative;cursor:pointer;animation:breathe 2.8s ease-in-out infinite;transition:transform .2s,box-shadow .2s}.launch:hover{transform:scale(1.04);box-shadow:inset 0 0 35px rgba(255,210,135,.35),0 0 85px rgba(215,25,32,.5)}.launch:active{transform:scale(.96)}.launch span{display:block;font:700 clamp(15px,2vw,22px) 'Space Mono',monospace;letter-spacing:.12em}.launch small{display:block;margin-top:12px;font-size:9px;letter-spacing:.16em;color:#f5d99a}
+         .launch-wrap{position:relative;width:min(290px,68vw);height:min(290px,68vw);display:grid;place-items:center}.launch-wrap:before,.launch-wrap:after{content:"";position:absolute;border:1px solid rgba(230,185,90,.3);border-radius:50%;inset:4%;animation:ring 3s ease-out infinite}.launch-wrap:after{inset:-11%;animation-delay:1.1s;opacity:.4}.progress-ring{position:absolute;z-index:0;width:82%;height:82%;border-radius:50%;padding:3px;transition:background .1s linear;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+         .launch{z-index:1;width:72%;height:72%;border-radius:50%;border:1px solid rgba(230,185,90,.8);background:radial-gradient(circle at 50% 42%,#ed2830 0,#aa1019 35%,#450a10 72%,#150c0f 100%);box-shadow:inset 0 0 35px rgba(255,210,135,.25),0 0 60px rgba(215,25,32,.25);color:var(--white);position:relative;cursor:pointer;animation:breathe 2.8s ease-in-out infinite;transition:transform .2s,box-shadow .2s}.launch:hover{transform:scale(1.04);box-shadow:inset 0 0 35px rgba(255,210,135,.35),0 0 85px rgba(215,25,32,.5)}.launch:active{transform:scale(.96)}.launch span{display:block;font:700 clamp(15px,2vw,22px) 'Space Mono',monospace;letter-spacing:.12em}.hold-progress{display:grid;width:min(290px,68vw);gap:8px;margin-top:24px;color:rgba(248,246,239,.62);font:10px 'Space Mono',monospace;letter-spacing:.16em;text-align:center}.hold-track{height:4px;overflow:hidden;border-radius:999px;background:rgba(248,246,239,.14)}.hold-track span{display:block;height:100%;border-radius:inherit;background:var(--gold);transition:width .1s linear}
         .hint{margin-top:40px;color:rgba(248,246,239,.48);font:10px 'Space Mono',monospace;letter-spacing:.18em;animation:reveal 1s .6s both}.kbd{border:1px solid rgba(248,246,239,.35);padding:4px 7px;color:var(--white);margin:0 4px}
         .count{font:clamp(120px,22vw,260px) 'Playfair Display',serif;color:var(--gold);line-height:1;animation:rise .5s}.count-label{font:10px 'Space Mono',monospace;letter-spacing:.38em;color:var(--white);margin-top:20px}
          .finale .stage{animation:rise 1.2s both}.finale .eyebrow{color:var(--red)}.finale .title{font-size:clamp(74px,15vw,180px);font-weight:700;letter-spacing:.08em;color:var(--white);text-shadow:0 0 35px rgba(230,185,90,.3)}.finale .subtitle{color:var(--gold);font-family:'DM Sans',sans-serif;font-size:clamp(15px,2vw,22px);letter-spacing:.08em}.links{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:42px}.link{min-width:138px;padding:14px 22px;border:1px solid rgba(230,185,90,.72);color:var(--white);font:11px 'Space Mono',monospace;letter-spacing:.16em;text-decoration:none;transition:background-color .2s,border-color .2s,color .2s,transform .2s}.link:hover{border-color:var(--white);background:rgba(230,185,90,.14);color:var(--gold);transform:translateY(-2px)}.link:focus-visible{outline:2px solid var(--white);outline-offset:4px}.logo{display:block;width:86px;height:86px;margin-bottom:26px;border:1px solid rgba(230,185,90,.72);border-radius:50%;background:var(--white);box-shadow:0 0 26px rgba(230,185,90,.2);object-fit:contain}
@@ -171,7 +221,11 @@ export function SmartisaLaunch() {
         <header className="topline"><span className="mark"><i /> SMARTISA / CEREMONY CONTROL</span><button className="replay" onClick={reset} aria-label="Replay ceremony">R&nbsp; / &nbsp;Replay</button></header>
         {state === "standby" && <>
           <h1 className="title">PELUNCURAN RESMI APLIKASI SMARTISA</h1>
-           <div className="launch-wrap"><button className="launch" onClick={launch} aria-label="Luncurkan Smartisa"><span>LUNCURKAN</span></button></div>
+           <div className="launch-wrap">
+             <div className="progress-ring" role="progressbar" aria-label="Progress peluncuran" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(holdProgress)} style={{ background: `conic-gradient(var(--gold) ${holdProgress}%, rgba(230,185,90,.16) 0)` }} />
+             <button className="launch" onPointerDown={(event) => { event.preventDefault(); event.currentTarget.setPointerCapture(event.pointerId); beginHold(); }} onPointerUp={cancelHold} onPointerCancel={cancelHold} onLostPointerCapture={cancelHold} onKeyDown={(event) => { if (event.code === "Space" || event.key === "Enter") { event.preventDefault(); if (!event.repeat) beginHold(); } }} onKeyUp={(event) => { if (event.code === "Space" || event.key === "Enter") { event.preventDefault(); cancelHold(); } }} aria-label="Tahan untuk meluncurkan Smartisa selama 10 detik"><span>LUNCURKAN</span></button>
+           </div>
+           <div className="hold-progress" aria-live="polite"><div className="hold-track"><span style={{ width: `${holdProgress}%` }} /></div><span>{holdProgress > 0 ? `${Math.round(holdProgress)}%` : "TAHAN 10 DETIK"}</span></div>
           <p className="hint">TAP CONTROL &nbsp;·&nbsp; PRESS <b className="kbd">SPACE</b> TO ACTIVATE</p>
         </>}
         {state === "countdown" && <><div className="eyebrow">Protokol Peluncuran Aktif</div><div className="count" aria-label={`Countdown ${count}`}>{count > 0 ? count : "—"}</div><div className="count-label">INDONESIA MAJU / SMARTISA</div></>}

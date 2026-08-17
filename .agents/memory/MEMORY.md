@@ -1,0 +1,1 @@
+- [Deployment package manager](deployment-package-manager.md) — lock pnpm to the version used to generate the workspace lockfile before frozen installs.

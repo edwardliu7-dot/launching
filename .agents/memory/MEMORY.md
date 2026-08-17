@@ -1,1 +1,2 @@
 - [Deployment package manager](deployment-package-manager.md) — lock pnpm to the version used to generate the workspace lockfile before frozen installs.
+- [Git pane vs remote](git-pane-vs-remote.md) — a broken Replit Git pane can report no provider even when the repository remote is directly reachable.

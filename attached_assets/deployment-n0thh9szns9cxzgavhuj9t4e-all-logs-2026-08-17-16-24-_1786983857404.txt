@@ -1,0 +1,829 @@
+2026-Aug-17 16:20:03 Docker 29.6.1 with BuildKit and Buildx detected on deployment server (localhost).
+2026-Aug-17 16:20:03 Starting deployment of edwardliu7-dot/launching:main to localhost.
+2026-Aug-17 16:20:04 Preparing container with helper image: docker.io/coollabsio/coolify-helper:1.0.15
+2026-Aug-17 16:20:04 [DEBUG] [CMD]: docker stop --timeout=30 n0thh9szns9cxzgavhuj9t4e
+2026-Aug-17 16:20:04 [DEBUG] Error response from daemon: No such container: n0thh9szns9cxzgavhuj9t4e
+2026-Aug-17 16:20:09 [DEBUG] [CMD]: docker run -d --network 'coolify' --name n0thh9szns9cxzgavhuj9t4e  --rm -v /root/.docker/buildx:/root/.docker/buildx -v /var/run/docker.sock:/var/run/docker.sock docker.io/coollabsio/coolify-helper:1.0.15
+2026-Aug-17 16:20:09 [DEBUG] 4a92b77479a0c2b835b12add2472284cf3a3ae5f88fdb7e96db0d20bd632cf83
+2026-Aug-17 16:20:14 [DEBUG] [CMD]: docker exec n0thh9szns9cxzgavhuj9t4e bash -c 'GIT_SSH_COMMAND="ssh -o ConnectTimeout=30 -p 22 -o Port=22 -o LogLevel=ERROR -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git ls-remote '\''https://x-access-token:<REDACTED>@github.com/edwardliu7-dot/launching.git'\'' '\''refs/heads/main'\'''
+2026-Aug-17 16:20:14 [DEBUG] 43cdc7435a980834d48a699185d08d2913911427	refs/heads/main
+2026-Aug-17 16:20:14 Image not found (9x96bf8k1wei43lhvrh7szhb:43cdc7435a980834d48a699185d08d2913911427). Building new image.
+2026-Aug-17 16:20:15 ----------------------------------------
+2026-Aug-17 16:20:15 Importing edwardliu7-dot/launching:main (commit sha 43cdc7435a980834d48a699185d08d2913911427) to /artifacts/n0thh9szns9cxzgavhuj9t4e.
+2026-Aug-17 16:20:16 [DEBUG] [CMD]: docker exec n0thh9szns9cxzgavhuj9t4e bash -c 'git -c '\''url.https://x-access-token:<REDACTED>@github.com/.insteadOf=https://github.com/'\'' -c http.version=HTTP/1.1 clone --depth=1 --recurse-submodules --shallow-submodules -b '\''main'\'' '\''https:<REDACTED>@github.com/edwardliu7-dot/launching.git'\'' '\''/artifacts/n0thh9szns9cxzgavhuj9t4e'\'' && cd '\''/artifacts/n0thh9szns9cxzgavhuj9t4e'\'' && GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git -c '\''url.https://x-access-token:<REDACTED>@github.com/.insteadOf=https://github.com/'\'' -c http.version=HTTP/1.1 fetch --depth=1 origin '\''43cdc7435a980834d48a699185d08d2913911427'\'' && git -c '\''url.https:<REDACTED>@github.com/.insteadOf=https://github.com/'\'' -c http.version=HTTP/1.1 -c advice.detachedHead=false checkout '\''43cdc7435a980834d48a699185d08d2913911427'\'' >/dev/null 2>&1 && cd '\''/artifacts/n0thh9szns9cxzgavhuj9t4e'\'' && if [ -f .gitmodules ]; then git -c '\''url.https:<REDACTED>@github.com/.insteadOf=https://github.com/'\'' -c http.version=HTTP/1.1 submodule sync && GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git -c '\''url.https:<REDACTED>@github.com/.insteadOf=https://github.com/'\'' -c http.version=HTTP/1.1 submodule update --init --recursive --depth=1; fi && cd '\''/artifacts/n0thh9szns9cxzgavhuj9t4e'\'' && GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git -c '\''url.https:<REDACTED>@github.com/.insteadOf=https://github.com/'\'' -c http.version=HTTP/1.1 lfs pull'
+2026-Aug-17 16:<REDACTED>@10.26.1 with Corepack
+2026-Aug-17 16:20:23 [DEBUG] ⚠ No start command detected. Specify a start command: https://railpack.com/config/file
+2026-Aug-17 16:<REDACTED>@latest && corepack enable && corepack prepare --activate
+2026-Aug-17 16:20:23 [DEBUG] $ pnpm install --frozen-lockfile --prefer-offline
+2026-Aug-17 16:20:23 [DEBUG] 
+2026-Aug-17 16:20:23 [DEBUG] ▸ build
+2026-Aug-17 16:20:23 [DEBUG] $ pnpm run build
+2026-Aug-17 16:20:23 [DEBUG] [CMD]: docker exec n0thh9szns9cxzgavhuj9t4e bash -c 'cat /artifacts/railpack-plan.json'
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "$schema": "https://schema.railpack.com",
+2026-Aug-17 16:<REDACTED>@latest \u0026\u0026 corepack enable \u0026\u0026 corepack prepare --activate'",
+2026-Aug-17 16:20:23 [DEBUG] "customName": "npm i -g corepack@latest \u0026\u0026 corepack enable \u0026\u0026 corepack prepare --activate"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "cmd": "mkdir -p /app/node_modules/.cache"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "cmd": "pnpm install --frozen-lockfile --prefer-offline"
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "inputs": [
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "step": "packages:mise"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "include": [
+2026-Aug-17 16:20:23 [DEBUG] "."
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "local": true
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "name": "install",
+2026-Aug-17 16:20:23 [DEBUG] "secrets": [
+2026-Aug-17 16:20:23 [DEBUG] "NODE_ENV"
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "variables": {
+2026-Aug-17 16:20:23 [DEBUG] "CI": "true",
+2026-Aug-17 16:20:23 [DEBUG] "COREPACK_HOME": "/opt/corepack",
+2026-Aug-17 16:20:23 [DEBUG] "NODE_ENV": "production",
+2026-Aug-17 16:20:23 [DEBUG] "NPM_CONFIG_FUND": "false",
+2026-Aug-17 16:20:23 [DEBUG] "NPM_CONFIG_PRODUCTION": "false",
+2026-Aug-17 16:20:23 [DEBUG] "NPM_CONFIG_UPDATE_NOTIFIER": "false"
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "caches": [
+2026-Aug-17 16:20:23 [DEBUG] "node-modules",
+2026-Aug-17 16:20:23 [DEBUG] "vite-artifacts-mockup-sandbox",
+2026-Aug-17 16:20:23 [DEBUG] "vite-artifacts-smartisa-ceremony"
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "commands": [
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "cmd": "pnpm run build"
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "inputs": [
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "step": "install"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "include": [
+2026-Aug-17 16:20:23 [DEBUG] "."
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "local": true
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "name": "build",
+2026-Aug-17 16:20:23 [DEBUG] "secrets": [
+2026-Aug-17 16:20:23 [DEBUG] "*"
+2026-Aug-17 16:20:23 [DEBUG] ]
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "caches": [
+2026-Aug-17 16:20:23 [DEBUG] "apt",
+2026-Aug-17 16:20:23 [DEBUG] "apt-lists"
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "commands": [
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "cmd": "sh -c 'apt-get update \u0026\u0026 apt-get install -y curl wget'",
+2026-Aug-17 16:20:23 [DEBUG] "customName": "install apt packages: curl wget"
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "inputs": [
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "image": "ghcr.io/railwayapp/railpack-runtime:mise-2026.3.17"
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "name": "packages:apt:runtime"
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] ]
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] Final Railpack plan: {
+2026-Aug-17 16:20:23 [DEBUG] "$schema": "https:\/\/schema.railpack.com",
+2026-Aug-17 16:20:23 [DEBUG] "caches": {
+2026-Aug-17 16:20:23 [DEBUG] "apt": {
+2026-Aug-17 16:20:23 [DEBUG] "directory": "\/var\/cache\/apt",
+2026-Aug-17 16:20:23 [DEBUG] "type": "locked"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] "apt-lists": {
+2026-Aug-17 16:20:23 [DEBUG] "directory": "\/var\/lib\/apt\/lists",
+2026-Aug-17 16:20:23 [DEBUG] "type": "locked"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] "node-modules": {
+2026-Aug-17 16:20:23 [DEBUG] "directory": "\/app\/node_modules\/.cache",
+2026-Aug-17 16:20:23 [DEBUG] "type": "shared"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] "pnpm-install": {
+2026-Aug-17 16:20:23 [DEBUG] "directory": "\/root\/.local\/share\/pnpm\/store\/v3",
+2026-Aug-17 16:20:23 [DEBUG] "type": "shared"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] "vite-artifacts-mockup-sandbox": {
+2026-Aug-17 16:20:23 [DEBUG] "directory": "\/app\/artifacts\/mockup-sandbox\/node_modules\/.vite",
+2026-Aug-17 16:20:23 [DEBUG] "type": "shared"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] "vite-artifacts-smartisa-ceremony": {
+2026-Aug-17 16:20:23 [DEBUG] "directory": "\/app\/artifacts\/smartisa-ceremony\/node_modules\/.vite",
+2026-Aug-17 16:20:23 [DEBUG] "type": "shared"
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] "deploy": {
+2026-Aug-17 16:20:23 [DEBUG] "base": {
+2026-Aug-17 16:20:23 [DEBUG] "step": "packages:apt:runtime"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] "inputs": [
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "include": [
+2026-Aug-17 16:20:23 [DEBUG] "\/mise\/shims",
+2026-Aug-17 16:20:23 [DEBUG] "\/mise\/installs",
+2026-Aug-17 16:20:23 [DEBUG] "\/usr\/local\/bin\/mise",
+2026-Aug-17 16:20:23 [DEBUG] "\/etc\/mise\/config.toml",
+2026-Aug-17 16:20:23 [DEBUG] "\/root\/.local\/state\/mise"
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "step": "packages:mise"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "include": [
+2026-Aug-17 16:20:23 [DEBUG] "\/app\/node_modules"
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "step": "build"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "exclude": [
+2026-Aug-17 16:20:23 [DEBUG] "node_modules",
+2026-Aug-17 16:20:23 [DEBUG] ".yarn"
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "include": [
+2026-Aug-17 16:20:23 [DEBUG] "\/root\/.cache",
+2026-Aug-17 16:20:23 [DEBUG] ".",
+2026-Aug-17 16:20:23 [DEBUG] "\/opt\/corepack"
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "step": "build"
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "variables": {
+2026-Aug-17 16:20:23 [DEBUG] "CI": "true",
+2026-Aug-17 16:20:23 [DEBUG] "NODE_ENV": "production",
+2026-Aug-17 16:20:23 [DEBUG] "NPM_CONFIG_FUND": "false",
+2026-Aug-17 16:20:23 [DEBUG] "NPM_CONFIG_PRODUCTION": "false",
+2026-Aug-17 16:20:23 [DEBUG] "NPM_CONFIG_UPDATE_NOTIFIER": "false"
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] "steps": [
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "assets": {
+2026-Aug-17 16:20:23 [DEBUG] "generated-mise-toml": "[tools]\n  node = \"22.23.2\"\n\n[settings]\n  idiomatic_version_file_enable_tools = [\"python\", \"node\", \"ruby\", \"elixir\", \"go\", \"java\", \"yarn\"]\n  install_before = \"14d\"\n  paranoid = true\n  trusted_config_paths = [\"\/app\"]\n  [settings.node]\n    corepack = true\n    verify = false\n"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] "commands": [
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "path": "\/mise\/shims"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "customName": "create mise config",
+2026-Aug-17 16:20:23 [DEBUG] "name": "generated-mise-toml",
+2026-Aug-17 16:20:23 [DEBUG] "path": "\/etc\/mise\/config.toml"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "cmd": "mise install",
+2026-Aug-17 16:20:23 [DEBUG] "customName": "install mise packages: node"
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "inputs": [
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "image": "ghcr.io\/railwayapp\/railpack-builder:mise-2026.3.17"
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "name": "packages:mise",
+2026-Aug-17 16:20:23 [DEBUG] "variables": {
+2026-Aug-17 16:20:23 [DEBUG] "MISE_CACHE_DIR": "\/mise\/cache",
+2026-Aug-17 16:20:23 [DEBUG] "MISE_CONFIG_DIR": "\/mise",
+2026-Aug-17 16:20:23 [DEBUG] "MISE_DATA_DIR": "\/mise",
+2026-Aug-17 16:20:23 [DEBUG] "MISE_INSTALLS_DIR": "\/mise\/installs",
+2026-Aug-17 16:20:23 [DEBUG] "MISE_SHIMS_DIR": "\/mise\/shims"
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "caches": [
+2026-Aug-17 16:20:23 [DEBUG] "pnpm-install"
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "commands": [
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "path": "\/app\/node_modules\/.bin"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "dest": "package.json",
+2026-Aug-17 16:20:23 [DEBUG] "src": "package.json"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "cmd": "sh -c 'npm i -g corepack@latest && corepack enable && corepack prepare --activate'",
+2026-Aug-17 16:20:23 [DEBUG] "customName": "npm i -g corepack@latest && corepack enable && corepack prepare --activate"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "cmd": "mkdir -p \/app\/node_modules\/.cache"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "cmd": "pnpm install --frozen-lockfile --prefer-offline"
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "inputs": [
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "step": "packages:mise"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "include": [
+2026-Aug-17 16:20:23 [DEBUG] "."
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "local": true
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "name": "install",
+2026-Aug-17 16:20:23 [DEBUG] "secrets": [
+2026-Aug-17 16:20:23 [DEBUG] "NODE_ENV"
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "variables": {
+2026-Aug-17 16:20:23 [DEBUG] "CI": "true",
+2026-Aug-17 16:20:23 [DEBUG] "COREPACK_HOME": "\/opt\/corepack",
+2026-Aug-17 16:20:23 [DEBUG] "NODE_ENV": "production",
+2026-Aug-17 16:20:23 [DEBUG] "NPM_CONFIG_FUND": "false",
+2026-Aug-17 16:20:23 [DEBUG] "NPM_CONFIG_PRODUCTION": "false",
+2026-Aug-17 16:20:23 [DEBUG] "NPM_CONFIG_UPDATE_NOTIFIER": "false"
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "caches": [
+2026-Aug-17 16:20:23 [DEBUG] "node-modules",
+2026-Aug-17 16:20:23 [DEBUG] "vite-artifacts-mockup-sandbox",
+2026-Aug-17 16:20:23 [DEBUG] "vite-artifacts-smartisa-ceremony"
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "commands": [
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "cmd": "pnpm run build"
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "inputs": [
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "step": "install"
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "include": [
+2026-Aug-17 16:20:23 [DEBUG] "."
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "local": true
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "name": "build",
+2026-Aug-17 16:20:23 [DEBUG] "secrets": [
+2026-Aug-17 16:20:23 [DEBUG] "*"
+2026-Aug-17 16:20:23 [DEBUG] ]
+2026-Aug-17 16:20:23 [DEBUG] },
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "caches": [
+2026-Aug-17 16:20:23 [DEBUG] "apt",
+2026-Aug-17 16:20:23 [DEBUG] "apt-lists"
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "commands": [
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "cmd": "sh -c 'apt-get update && apt-get install -y curl wget'",
+2026-Aug-17 16:20:23 [DEBUG] "customName": "install apt packages: curl wget"
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "inputs": [
+2026-Aug-17 16:20:23 [DEBUG] {
+2026-Aug-17 16:20:23 [DEBUG] "image": "ghcr.io\/railwayapp\/railpack-runtime:mise-2026.3.17"
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] ],
+2026-Aug-17 16:20:23 [DEBUG] "name": "packages:apt:runtime"
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 [DEBUG] ]
+2026-Aug-17 16:20:23 [DEBUG] }
+2026-Aug-17 16:20:23 Building docker image with Railpack.
+2026-Aug-17 16:20:23 To check the current progress, click on Show Debug Logs.
+2026-Aug-17 16:20:24 [DEBUG] [CMD]: docker exec n0thh9szns9cxzgavhuj9t4e bash -c 'cat /artifacts/build.sh'
+2026-Aug-17 16:20:24 [DEBUG] DOCKER_CONFIG=/root/.docker docker buildx create --name coolify-railpack --driver docker-container 2>/dev/null || true && cd /artifacts/n0thh9szns9cxzgavhuj9t4e && set -a && source /artifacts/build-time.env && set +a && env 'RAILPACK_DEPLOY_APT_PACKAGES=curl wget' DOCKER_CONFIG=/root/.docker docker buildx build --builder coolify-railpack --add-host coolify:10.0.1.8 --add-host coolify-db:10.0.1.4 --add-host coolify-realtime:10.0.1.5 --add-host coolify-redis:10.0.1.6 --add-host llfsfaj7n7vzkp3n08i500fv:10.0.1.2 --add-host llfsfaj7n7vzkp3n08i500fv-proxy:10.0.1.3 --network host --build-arg BUILDKIT_SYNTAX="ghcr.io/railwayapp/railpack-frontend:v0.23.0" --build-arg cache-key='9x96bf8k1wei43lhvrh7szhb' --build-arg secrets-hash=d2f4c68554b8210e5b7c83b61de69ccda836f1d2e4db86cfa92687fba37eeb9b --secret 'id=NODE_ENV,env=NODE_ENV' --secret 'id=RAILPACK_DEPLOY_APT_PACKAGES,env=RAILPACK_DEPLOY_APT_PACKAGES' --secret 'id=COOLIFY_URL,env=COOLIFY_URL' --secret 'id=COOLIFY_FQDN,env=COOLIFY_FQDN' --secret 'id=COOLIFY_BRANCH,env=COOLIFY_BRANCH' --secret 'id=COOLIFY_RESOURCE_UUID,env=COOLIFY_RESOURCE_UUID' -f /artifacts/railpack-plan.json --progress plain --load -t 9x96bf8k1wei43lhvrh7szhb:43cdc7435a980834d48a699185d08d2913911427 /artifacts/n0thh9szns9cxzgavhuj9t4e
+2026-Aug-17 16:20:25 [DEBUG] [CMD]: docker exec n0thh9szns9cxzgavhuj9t4e bash -c 'bash /artifacts/build.sh'
+2026-Aug-17 16:20:25 [DEBUG] #0 building with "coolify-railpack" instance using docker-container driver
+2026-Aug-17 16:20:25 [DEBUG] 
+2026-Aug-17 16:20:25 [DEBUG] #1 [internal] load build definition from railpack-plan.json
+2026-Aug-17 16:20:26 [DEBUG] #1 transferring dockerfile:
+2026-Aug-17 16:20:26 [DEBUG] #1 transferring dockerfile: 4.95kB done
+2026-Aug-17 16:20:26 [DEBUG] #1 DONE 0.6s
+2026-Aug-17 16:20:26 [DEBUG] #2 resolve image config for docker-image://ghcr.io/railwayapp/railpack-frontend:v0.23.0
+2026-Aug-17 16:20:27 [DEBUG] #2 DONE 1.2s
+2026-Aug-17 16:20:27 [DEBUG] #3 docker-image://ghcr.io/railwayapp/railpack-frontend:v0.23.0@sha256:ba4c430961d9ee3215c64807727a4b11e2198daac31250e9db9eaf9cee4624d6
+2026-Aug-17 16:20:27 [DEBUG] #3 resolve ghcr.io/railwayapp/railpack-frontend:v0.23.0@sha256:ba4c430961d9ee3215c64807727a4b11e2198daac31250e9db9eaf9cee4624d6
+2026-Aug-17 16:20:27 [DEBUG] #3 resolve ghcr.io/railwayapp/railpack-frontend:v0.23.0@sha256:ba4c430961d9ee3215c64807727a4b11e2198daac31250e9db9eaf9cee4624d6 0.2s done
+2026-Aug-17 16:20:28 [DEBUG] #3 CACHED
+2026-Aug-17 16:20:28 [DEBUG] #4 load build definition from railpack-plan.json
+2026-Aug-17 16:20:29 [DEBUG] #4 transferring dockerfile: 4.95kB done
+2026-Aug-17 16:20:29 [DEBUG] #4 DONE 0.5s
+2026-Aug-17 16:20:30 [DEBUG] #5 loading .
+2026-Aug-17 16:20:30 [DEBUG] #5 DONE 0.0s
+2026-Aug-17 16:20:30 [DEBUG] 
+2026-Aug-17 16:20:30 [DEBUG] #6 [railpack] secrets hash
+2026-Aug-17 16:20:30 [DEBUG] #6 DONE 0.0s
+2026-Aug-17 16:20:30 [DEBUG] 
+2026-Aug-17 16:20:30 [DEBUG] #7 docker-image://ghcr.io/railwayapp/railpack-runtime:mise-2026.3.17
+2026-Aug-17 16:20:30 [DEBUG] #7 resolve ghcr.io/railwayapp/railpack-runtime:mise-2026.3.17
+2026-Aug-17 16:20:31 [DEBUG] #7 ...
+2026-Aug-17 16:20:31 [DEBUG] #8 docker-image://ghcr.io/railwayapp/railpack-builder:mise-2026.3.17
+2026-Aug-17 16:20:31 [DEBUG] #8 resolve ghcr.io/railwayapp/railpack-builder:mise-2026.3.17 1.4s done
+2026-Aug-17 16:20:31 [DEBUG] #8 DONE 1.5s
+2026-Aug-17 16:20:31 [DEBUG] #9 mkdir /etc/mise
+2026-Aug-17 16:20:31 [DEBUG] #9 CACHED
+2026-Aug-17 16:20:31 [DEBUG] 
+2026-Aug-17 16:20:31 [DEBUG] #6 [railpack] secrets hash
+2026-Aug-17 16:20:34 [DEBUG] #6 ...
+2026-Aug-17 16:20:34 [DEBUG] #5 loading .
+2026-Aug-17 16:20:34 [DEBUG] #5 transferring context: 3.39MB 0.4s done
+2026-Aug-17 16:20:34 [DEBUG] #5 DONE 3.0s
+2026-Aug-17 16:20:34 [DEBUG] #10 create mise config
+2026-Aug-17 16:20:34 [DEBUG] #10 DONE 3.1s
+2026-Aug-17 16:20:34 [DEBUG] 
+2026-Aug-17 16:20:34 [DEBUG] #7 docker-image://ghcr.io/railwayapp/railpack-runtime:mise-2026.3.17
+2026-Aug-17 16:20:34 [DEBUG] #7 resolve ghcr.io/railwayapp/railpack-runtime:mise-2026.3.17 4.6s done
+2026-Aug-17 16:20:34 [DEBUG] #7 DONE 4.7s
+2026-Aug-17 16:20:34 [DEBUG] 
+2026-Aug-17 16:20:34 [DEBUG] #11 [railpack] loading secrets
+2026-Aug-17 16:20:34 [DEBUG] #11 resolve docker.io/library/alpine:latest
+2026-Aug-17 16:20:34 [DEBUG] #11 ...
+2026-Aug-17 16:20:34 [DEBUG] 
+2026-Aug-17 16:20:34 [DEBUG] #6 [railpack] secrets hash
+2026-Aug-17 16:20:34 [DEBUG] #6 DONE 3.3s
+2026-Aug-17 16:20:34 [DEBUG] 
+2026-Aug-17 16:20:34 [DEBUG] #7 docker-image://ghcr.io/railwayapp/railpack-runtime:mise-2026.3.17
+2026-Aug-17 16:20:34 [DEBUG] #7 CACHED
+2026-Aug-17 16:20:34 [DEBUG] #12 install mise packages: node
+2026-Aug-17 16:20:35 [DEBUG] #12 1.130 mise node@22.23.2    [1/3] install
+2026-Aug-17 16:20:36 [DEBUG] #12 1.148 mise node@22.23.2    [1/3] download node-v22.23.2-linux-x64.tar.gz
+2026-Aug-17 16:20:36 [DEBUG] #12 1.983 mise node@22.23.2    [2/3] generate checksum node-v22.23.2-linux-x64.tar.gz
+2026-Aug-17 16:20:36 [DEBUG] #12 2.031 mise node@22.23.2    [3/3] extract node-v22.23.2-linux-x64.tar.gz
+2026-Aug-17 16:20:37 [DEBUG] #12 ...
+2026-Aug-17 16:20:37 [DEBUG] 
+2026-Aug-17 16:20:37 [DEBUG] #11 [railpack] loading secrets
+2026-Aug-17 16:20:37 [DEBUG] #11 resolve docker.io/library/alpine:latest 6.1s done
+2026-Aug-17 16:20:37 [DEBUG] #11 sha256:55afa1ecc21d2bb5e5045f32dafee56272ffd89860bac26f6c32123439af26a4 3.85MB / 3.85MB 0.9s done
+2026-Aug-17 16:20:37 [DEBUG] #11 DONE 7.6s
+2026-Aug-17 16:20:37 [DEBUG] #13 install apt packages: curl wget
+2026-Aug-17 16:20:37 [DEBUG] #13 0.967 Hit:1 http://deb.debian.org/debian bookworm InRelease
+2026-Aug-17 16:<REDACTED>@22.23.2    [3/3] node -v
+2026-Aug-17 16:20:47 [DEBUG] #12 4.799 mise node@22.23.2    [3/3] v22.23.2
+2026-Aug-17 16:20:47 [DEBUG] #12 4.801 mise node@22.23.2    [3/3] npm -v
+2026-Aug-17 16:20:47 [DEBUG] #12 5.050 mise node@22.23.2    [3/3] 10.9.8
+2026-Aug-17 16:20:47 [DEBUG] #12 5.065 mise node@22.23.2    [3/3] enable corepack shims
+2026-Aug-17 16:20:47 [DEBUG] #12 7.321 mise node@22.23.2  ✓ installed
+2026-Aug-17 16:20:47 [DEBUG] #12 DONE 12.5s
+2026-Aug-17 16:20:47 [DEBUG] 
+2026-Aug-17 16:20:47 [DEBUG] #13 install apt packages: curl wget
+2026-Aug-17 16:20:47 [DEBUG] #13 7.872 Fetched 3429 kB in 0s (17.3 MB/s)
+2026-Aug-17 16:20:47 [DEBUG] #13 12.45 Selecting previously unselected package krb5-locales.
+2026-Aug-17 16:20:47 [DEBUG] #13 12.45 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6623 files and directories currently installed.)
+2026-Aug-17 16:20:47 [DEBUG] #13 12.47 Preparing to unpack .../00-krb5-locales_1.20.1-2+deb12u5_all.deb ...
+2026-Aug-17 16:20:47 [DEBUG] #13 12.55 Unpacking krb5-locales (1.20.1-2+deb12u5) ...
+2026-Aug-17 16:20:47 [DEBUG] #13 ...
+2026-Aug-17 16:20:47 [DEBUG] 
+2026-Aug-17 16:20:47 [DEBUG] #15 [railpack] hash used secrets
+2026-Aug-17 16:20:49 [DEBUG] #15 DONE 1.7s
+2026-Aug-17 16:20:49 [DEBUG] #13 install apt packages: curl wget
+2026-Aug-17 16:20:49 [DEBUG] #13 13.30 Selecting previously unselected package libpsl5:amd64.
+2026-Aug-17 16:20:49 [DEBUG] #13 13.31 Preparing to unpack .../01-libpsl5_0.21.2-1_amd64.deb ...
+2026-Aug-17 16:20:49 [DEBUG] #13 13.49 Unpacking libpsl5:amd64 (0.21.2-1) ...
+2026-Aug-17 16:20:49 [DEBUG] #13 13.92 Selecting previously unselected package wget.
+2026-Aug-17 16:20:49 [DEBUG] #13 13.93 Preparing to unpack .../02-wget_1.21.3-1+deb12u1_amd64.deb ...
+2026-Aug-17 16:20:49 [DEBUG] #13 14.05 Unpacking wget (1.21.3-1+deb12u1) ...
+2026-Aug-17 16:20:50 [DEBUG] #13 ...
+2026-Aug-17 16:20:50 [DEBUG] 
+2026-Aug-17 16:20:50 [DEBUG] #16 copy / /app
+2026-Aug-17 16:20:50 [DEBUG] #16 DONE 2.2s
+2026-Aug-17 16:20:50 [DEBUG] #17 [railpack] copy used secrets hash
+2026-Aug-17 16:20:52 [DEBUG] #17 ...
+2026-Aug-17 16:20:52 [DEBUG] 
+2026-Aug-17 16:20:52 [DEBUG] #18 copy /mise/shims
+2026-Aug-17 16:20:52 [DEBUG] #18 DONE 3.5s
+2026-Aug-17 16:20:52 [DEBUG] #13 install apt packages: curl wget
+2026-Aug-17 16:20:52 [DEBUG] #13 17.11 Selecting previously unselected package libbrotli1:amd64.
+2026-Aug-17 16:20:52 [DEBUG] #13 17.12 Preparing to unpack .../03-libbrotli1_1.0.9-2+b6_amd64.deb ...
+2026-Aug-17 16:20:52 [DEBUG] #13 17.80 Unpacking libbrotli1:amd64 (1.0.9-2+b6) ...
+2026-Aug-17 16:20:54 [DEBUG] #13 ...
+2026-Aug-17 16:20:54 [DEBUG] 
+2026-Aug-17 16:20:54 [DEBUG] #17 [railpack] copy used secrets hash
+2026-Aug-17 16:20:54 [DEBUG] #17 DONE 4.2s
+2026-Aug-17 16:20:54 [DEBUG] #19 copy /mise/installs
+2026-Aug-17 16:20:55 [DEBUG] #19 ...
+2026-Aug-17 16:20:55 [DEBUG] #20 copy package.json
+2026-Aug-17 16:20:55 [DEBUG] #20 DONE 4.5s
+2026-Aug-17 16:20:55 [DEBUG] 
+2026-Aug-17 16:20:55 [DEBUG] #13 install apt packages: curl wget
+2026-Aug-17 16:20:55 [DEBUG] #13 19.45 Selecting previously unselected package libkrb5support0:amd64.
+2026-Aug-17 16:20:55 [DEBUG] #13 19.45 Preparing to unpack .../04-libkrb5support0_1.20.1-2+deb12u5_amd64.deb ...
+2026-Aug-17 16:20:55 [DEBUG] #13 19.55 Unpacking libkrb5support0:amd64 (1.20.1-2+deb12u5) ...
+2026-Aug-17 16:20:55 [DEBUG] #13 20.45 Selecting previously unselected package libk5crypto3:amd64.
+2026-Aug-17 16:20:55 [DEBUG] #13 20.46 Preparing to unpack .../05-libk5crypto3_1.20.1-2+deb12u5_amd64.deb ...
+2026-Aug-17 16:20:55 [DEBUG] #13 20.56 Unpacking libk5crypto3:amd64 (1.20.1-2+deb12u5) ...
+2026-Aug-17 16:21:03 [DEBUG] #13 28.24 Selecting previously unselected package libkeyutils1:amd64.
+2026-Aug-17 16:21:03 [DEBUG] #13 28.24 Preparing to unpack .../06-libkeyutils1_1.6.3-2_amd64.deb ...
+2026-Aug-17 16:21:04 [DEBUG] #13 29.55 Unpacking libkeyutils1:amd64 (1.6.3-2) ...
+2026-Aug-17 16:21:04 [DEBUG] #13 ...
+2026-Aug-17 16:21:04 [DEBUG] 
+2026-Aug-17 16:21:04 [DEBUG] #19 copy /mise/installs
+2026-Aug-17 16:21:04 [DEBUG] #19 DONE 11.5s
+2026-Aug-17 16:21:04 [DEBUG] 
+2026-Aug-17 16:21:04 [DEBUG] #21 npm i -g corepack@latest && corepack enable && corepack prepare --activate
+2026-Aug-17 16:21:04 [DEBUG] #21 ...
+2026-Aug-17 16:21:04 [DEBUG] 
+2026-Aug-17 16:21:04 [DEBUG] #22 copy /usr/local/bin/mise
+2026-Aug-17 16:21:09 [DEBUG] #22 DONE 4.9s
+2026-Aug-17 16:21:09 [DEBUG] 
+2026-Aug-17 16:21:09 [DEBUG] #23 copy /etc/mise/config.toml
+2026-Aug-17 16:21:11 [DEBUG] #23 DONE 2.2s
+2026-Aug-17 16:21:11 [DEBUG] 
+2026-Aug-17 16:21:11 [DEBUG] #13 install apt packages: curl wget
+2026-Aug-17 16:21:11 [DEBUG] #13 30.13 Selecting previously unselected package libkrb5-3:amd64.
+2026-Aug-17 16:21:11 [DEBUG] #13 30.13 Preparing to unpack .../07-libkrb5-3_1.20.1-2+deb12u5_amd64.deb ...
+2026-Aug-17 16:21:11 [DEBUG] #13 30.29 Unpacking libkrb5-3:amd64 (1.20.1-2+deb12u5) ...
+2026-Aug-17 16:21:11 [DEBUG] #13 32.40 Selecting previously unselected package libgssapi-krb5-2:amd64.
+2026-Aug-17 16:21:11 [DEBUG] #13 32.40 Preparing to unpack .../08-libgssapi-krb5-2_1.20.1-2+deb12u5_amd64.deb ...
+2026-Aug-17 16:21:11 [DEBUG] #13 34.82 Unpacking libgssapi-krb5-2:amd64 (1.20.1-2+deb12u5) ...
+2026-Aug-17 16:21:11 [DEBUG] #13 36.43 Selecting previously unselected package libsasl2-modules-db:amd64.
+2026-Aug-17 16:21:11 [DEBUG] #13 36.43 Preparing to unpack .../09-libsasl2-modules-db_2.1.28+dfsg-10_amd64.deb ...
+2026-Aug-17 16:21:11 [DEBUG] #13 36.63 Unpacking libsasl2-modules-db:amd64 (2.1.28+dfsg-10) ...
+2026-Aug-17 16:21:12 [DEBUG] #13 ...
+2026-Aug-17 16:21:12 [DEBUG] 
+2026-Aug-17 16:21:12 [DEBUG] #24 copy /root/.local/state/mise
+2026-Aug-17 16:21:14 [DEBUG] #24 DONE 2.2s
+2026-Aug-17 16:21:14 [DEBUG] 
+2026-Aug-17 16:21:14 [DEBUG] #13 install apt packages: curl wget
+2026-Aug-17 16:21:14 [DEBUG] #13 38.81 Selecting previously unselected package libsasl2-2:amd64.
+2026-Aug-17 16:21:14 [DEBUG] #13 38.81 Preparing to unpack .../10-libsasl2-2_2.1.28+dfsg-10_amd64.deb ...
+2026-Aug-17 16:21:14 [DEBUG] #13 39.00 Unpacking libsasl2-2:amd64 (2.1.28+dfsg-10) ...
+2026-Aug-17 16:21:14 [DEBUG] #13 40.12 Selecting previously unselected package libldap-2.5-0:amd64.
+2026-Aug-17 16:21:15 [DEBUG] #13 40.12 Preparing to unpack .../11-libldap-2.5-0_2.5.13+dfsg-5_amd64.deb ...
+2026-Aug-17 16:21:15 [DEBUG] #13 40.25 Unpacking libldap-2.5-0:amd64 (2.5.13+dfsg-5) ...
+2026-Aug-17 16:21:15 [DEBUG] #13 41.04 Selecting previously unselected package libnghttp2-14:amd64.
+2026-Aug-17 16:21:16 [DEBUG] #13 41.04 Preparing to unpack .../12-libnghttp2-14_1.52.0-1+deb12u3_amd64.deb ...
+2026-Aug-17 16:21:16 [DEBUG] #13 41.10 Unpacking libnghttp2-14:amd64 (1.52.0-1+deb12u3) ...
+2026-Aug-17 16:21:16 [DEBUG] #13 ...
+2026-Aug-17 16:21:16 [DEBUG] 
+2026-Aug-17 16:21:16 [DEBUG] #21 npm i -g corepack@latest && corepack enable && corepack prepare --activate
+2026-Aug-17 16:21:16 [DEBUG] #21 10.35 npm warn config production Use `--omit=dev` instead.
+2026-Aug-17 16:21:16 [DEBUG] #21 20.20
+2026-Aug-17 16:21:16 [DEBUG] #21 20.20 changed 1 package in 10s
+2026-Aug-17 16:21:16 [DEBUG] #21 20.34 Reshimming mise 22.23.2...
+2026-Aug-17 16:21:16 [DEBUG] #21 ...
+2026-Aug-17 16:21:16 [DEBUG] 
+2026-Aug-17 16:21:16 [DEBUG] #13 install apt packages: curl wget
+2026-Aug-17 16:21:16 [DEBUG] #13 41.58 Selecting previously unselected package librtmp1:amd64.
+2026-Aug-17 16:21:16 [DEBUG] #13 41.59 Preparing to unpack .../13-librtmp1_2.4+20151223.gitfa8646d.1-2+b2_amd64.deb ...
+2026-Aug-17 16:21:16 [DEBUG] #13 41.63 Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b2) ...
+2026-Aug-17 16:21:16 [DEBUG] #13 42.08 Selecting previously unselected package libssh2-1:amd64.
+2026-Aug-17 16:21:17 [DEBUG] #13 42.08 Preparing to unpack .../14-libssh2-1_1.10.0-3+b1_amd64.deb ...
+2026-Aug-17 16:21:17 [DEBUG] #13 42.14 Unpacking libssh2-1:amd64 (1.10.0-3+b1) ...
+2026-Aug-17 16:21:17 [DEBUG] #13 42.51 Selecting previously unselected package libcurl4:amd64.
+2026-Aug-17 16:21:17 [DEBUG] #13 42.52 Preparing to unpack .../15-libcurl4_7.88.1-10+deb12u15_amd64.deb ...
+2026-Aug-17 16:21:17 [DEBUG] #13 42.55 Unpacking libcurl4:amd64 (7.88.1-10+deb12u15) ...
+2026-Aug-17 16:21:17 [DEBUG] #13 42.91 Selecting previously unselected package curl.
+2026-Aug-17 16:21:17 [DEBUG] #13 42.91 Preparing to unpack .../16-curl_7.88.1-10+deb12u15_amd64.deb ...
+2026-Aug-17 16:21:17 [DEBUG] #13 42.94 Unpacking curl (7.88.1-10+deb12u15) ...
+2026-Aug-17 16:21:18 [DEBUG] #13 43.23 Selecting previously unselected package libldap-common.
+2026-Aug-17 16:21:18 [DEBUG] #13 43.24 Preparing to unpack .../17-libldap-common_2.5.13+dfsg-5_all.deb ...
+2026-Aug-17 16:21:18 [DEBUG] #13 43.26 Unpacking libldap-common (2.5.13+dfsg-5) ...
+2026-Aug-17 16:21:20 [DEBUG] #13 46.01 Selecting previously unselected package libsasl2-modules:amd64.
+2026-Aug-17 16:21:20 [DEBUG] #13 46.01 Preparing to unpack .../18-libsasl2-modules_2.1.28+dfsg-10_amd64.deb ...
+2026-Aug-17 16:21:20 [DEBUG] #13 46.11 Unpacking libsasl2-modules:amd64 (2.1.28+dfsg-10) ...
+2026-Aug-17 16:21:21 [DEBUG] #13 ...
+2026-Aug-17 16:21:21 [DEBUG] 
+2026-Aug-17 16:21:21 [DEBUG] #21 npm i -g corepack@latest && corepack enable && corepack prepare --activate
+2026-Aug-17 16:21:21 [DEBUG] #21 20.76 Preparing pnpm@10.26.1 for immediate activation...
+2026-Aug-17 16:21:21 [DEBUG] #21 DONE 25.4s
+2026-Aug-17 16:21:21 [DEBUG] #13 install apt packages: curl wget
+2026-Aug-17 16:21:21 [DEBUG] #13 46.50 Selecting previously unselected package publicsuffix.
+2026-Aug-17 16:21:21 [DEBUG] #13 46.50 Preparing to unpack .../19-publicsuffix_20230209.2326-1_all.deb ...
+2026-Aug-17 16:21:21 [DEBUG] #13 46.54 Unpacking publicsuffix (20230209.2326-1) ...
+2026-Aug-17 16:21:22 [DEBUG] #13 47.87 Setting up libkeyutils1:amd64 (1.6.3-2) ...
+2026-Aug-17 16:21:23 [DEBUG] #13 48.25 Setting up libpsl5:amd64 (0.21.2-1) ...
+2026-Aug-17 16:21:23 [DEBUG] #13 48.66 Setting up wget (1.21.3-1+deb12u1) ...
+2026-Aug-17 16:21:24 [DEBUG] #13 ...
+2026-Aug-17 16:21:24 [DEBUG] 
+2026-Aug-17 16:21:24 [DEBUG] #25 mkdir -p /app/node_modules/.cache
+2026-Aug-17 16:21:24 [DEBUG] #25 DONE 2.9s
+2026-Aug-17 16:21:24 [DEBUG] #13 install apt packages: curl wget
+2026-Aug-17 16:21:24 [DEBUG] #13 49.47 Setting up libbrotli1:amd64 (1.0.9-2+b6) ...
+2026-Aug-17 16:21:24 [DEBUG] #13 50.16 Setting up libsasl2-modules:amd64 (2.1.28+dfsg-10) ...
+2026-Aug-17 16:21:25 [DEBUG] #13 50.50 Setting up libnghttp2-14:amd64 (1.52.0-1+deb12u3) ...
+2026-Aug-17 16:21:25 [DEBUG] #13 50.91 Setting up krb5-locales (1.20.1-2+deb12u5) ...
+2026-Aug-17 16:21:26 [DEBUG] #13 51.18 Setting up libldap-common (2.5.13+dfsg-5) ...
+2026-Aug-17 16:21:26 [DEBUG] #13 51.59 Setting up libkrb5support0:amd64 (1.20.1-2+deb12u5) ...
+2026-Aug-17 16:21:26 [DEBUG] #13 51.92 Setting up libsasl2-modules-db:amd64 (2.1.28+dfsg-10) ...
+2026-Aug-17 16:21:27 [DEBUG] #13 52.30 Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b2) ...
+2026-Aug-17 16:21:27 [DEBUG] #13 52.54 Setting up libk5crypto3:amd64 (1.20.1-2+deb12u5) ...
+2026-Aug-17 16:21:28 [DEBUG] #13 53.84 Setting up libsasl2-2:amd64 (2.1.28+dfsg-10) ...
+2026-Aug-17 16:21:28 [DEBUG] #13 ...
+2026-Aug-17 16:21:28 [DEBUG] 
+2026-Aug-17 16:21:28 [DEBUG] #26 pnpm install --frozen-lockfile --prefer-offline
+2026-Aug-17 16:21:28 [DEBUG] #26 2.686 Scope: all 9 workspace projects
+2026-Aug-17 16:21:28 [DEBUG] #26 3.058  ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with <ROOT>/package.json
+2026-Aug-17 16:21:28 [DEBUG] #26 3.058
+2026-Aug-17 16:21:28 [DEBUG] #26 3.058 Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
+2026-Aug-17 16:21:28 [DEBUG] #26 3.058
+2026-Aug-17 16:21:28 [DEBUG] #26 3.058   Failure reason:
+2026-Aug-17 16:21:28 [DEBUG] #26 3.058   specifiers in the lockfile don't match specifiers in package.json:
+2026-Aug-17 16:21:28 [DEBUG] #26 3.058 * 3 dependencies were added: prettier@^3.9.6, typescript@~5.9.3, @replit/connectors-sdk@^0.4.1
+2026-Aug-17 16:21:28 [DEBUG] #26 3.058
+2026-Aug-17 16:21:28 [DEBUG] #26 ERROR: process "pnpm install --frozen-lockfile --prefer-offline" did not complete successfully: exit code: 1
+2026-Aug-17 16:21:29 [DEBUG] 
+2026-Aug-17 16:21:29 [DEBUG] #13 install apt packages: curl wget
+2026-Aug-17 16:21:29 [DEBUG] #13 CANCELED
+2026-Aug-17 16:21:30 [DEBUG] ------
+2026-Aug-17 16:21:30 [DEBUG] > pnpm install --frozen-lockfile --prefer-offline:
+2026-Aug-17 16:21:30 [DEBUG] 2.686 Scope: all 9 workspace projects
+2026-Aug-17 16:21:30 [DEBUG] 3.058  ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with <ROOT>/package.json
+2026-Aug-17 16:21:30 [DEBUG] 3.058
+2026-Aug-17 16:21:30 [DEBUG] 3.058 Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
+2026-Aug-17 16:21:30 [DEBUG] 3.058
+2026-Aug-17 16:21:30 [DEBUG] 3.058   Failure reason:
+2026-Aug-17 16:21:30 [DEBUG] 3.058   specifiers in the lockfile don't match specifiers in package.json:
+2026-Aug-17 16:21:30 [DEBUG] 3.058 * 3 dependencies were added: prettier@^3.9.6, typescript@~5.9.3, @replit/connectors-sdk@^0.4.1
+2026-Aug-17 16:21:30 [DEBUG] 3.058
+2026-Aug-17 16:21:30 [DEBUG] ------
+2026-Aug-17 16:21:30 [DEBUG] ERROR: failed to build: failed to solve: process "pnpm install --frozen-lockfile --prefer-offline" did not complete successfully: exit code: 1
+2026-Aug-17 16:21:30 [DEBUG] exit status 1
+2026-Aug-17 16:21:30 ========================================
+2026-Aug-17 16:21:30 Deployment failed: Command execution failed (exit code 1): docker exec n0thh9szns9cxzgavhuj9t4e bash -c 'bash /artifacts/build.sh'
+2026-Aug-17 16:21:30 Error: #0 building with "coolify-railpack" instance using docker-container driver
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #1 [internal] load build definition from railpack-plan.json
+2026-Aug-17 16:21:30 #1 transferring dockerfile:
+2026-Aug-17 16:21:30 #1 transferring dockerfile: 4.95kB done
+2026-Aug-17 16:21:30 #1 DONE 0.6s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #2 resolve image config for docker-image://ghcr.io/railwayapp/railpack-frontend:v0.23.0
+2026-Aug-17 16:21:30 #2 DONE 1.2s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #3 docker-image://ghcr.io/railwayapp/railpack-frontend:v0.23.0@sha256:ba4c430961d9ee3215c64807727a4b11e2198daac31250e9db9eaf9cee4624d6
+2026-Aug-17 16:21:30 #3 resolve ghcr.io/railwayapp/railpack-frontend:v0.23.0@sha256:ba4c430961d9ee3215c64807727a4b11e2198daac31250e9db9eaf9cee4624d6
+2026-Aug-17 16:21:30 #3 resolve ghcr.io/railwayapp/railpack-frontend:v0.23.0@sha256:ba4c430961d9ee3215c64807727a4b11e2198daac31250e9db9eaf9cee4624d6 0.2s done
+2026-Aug-17 16:21:30 #3 CACHED
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #4 load build definition from railpack-plan.json
+2026-Aug-17 16:21:30 #4 transferring dockerfile: 4.95kB done
+2026-Aug-17 16:21:30 #4 DONE 0.5s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #5 loading .
+2026-Aug-17 16:21:30 #5 DONE 0.0s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #6 [railpack] secrets hash
+2026-Aug-17 16:21:30 #6 DONE 0.0s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #7 docker-image://ghcr.io/railwayapp/railpack-runtime:mise-2026.3.17
+2026-Aug-17 16:21:30 #7 resolve ghcr.io/railwayapp/railpack-runtime:mise-2026.3.17
+2026-Aug-17 16:21:30 #7 ...
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #8 docker-image://ghcr.io/railwayapp/railpack-builder:mise-2026.3.17
+2026-Aug-17 16:21:30 #8 resolve ghcr.io/railwayapp/railpack-builder:mise-2026.3.17 1.4s done
+2026-Aug-17 16:21:30 #8 DONE 1.5s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #9 mkdir /etc/mise
+2026-Aug-17 16:21:30 #9 CACHED
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #6 [railpack] secrets hash
+2026-Aug-17 16:21:30 #6 ...
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #5 loading .
+2026-Aug-17 16:21:30 #5 transferring context: 3.39MB 0.4s done
+2026-Aug-17 16:21:30 #5 DONE 3.0s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #10 create mise config
+2026-Aug-17 16:21:30 #10 DONE 3.1s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #7 docker-image://ghcr.io/railwayapp/railpack-runtime:mise-2026.3.17
+2026-Aug-17 16:21:30 #7 resolve ghcr.io/railwayapp/railpack-runtime:mise-2026.3.17 4.6s done
+2026-Aug-17 16:21:30 #7 DONE 4.7s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #11 [railpack] loading secrets
+2026-Aug-17 16:21:30 #11 resolve docker.io/library/alpine:latest
+2026-Aug-17 16:21:30 #11 ...
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #6 [railpack] secrets hash
+2026-Aug-17 16:21:30 #6 DONE 3.3s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #7 docker-image://ghcr.io/railwayapp/railpack-runtime:mise-2026.3.17
+2026-Aug-17 16:21:30 #7 CACHED
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #12 install mise packages: node
+2026-Aug-17 16:21:30 #12 1.130 mise node@22.23.2    [1/3] install
+2026-Aug-17 16:21:30 #12 1.148 mise node@22.23.2    [1/3] download node-v22.23.2-linux-x64.tar.gz
+2026-Aug-17 16:21:30 #12 1.983 mise node@22.23.2    [2/3] generate checksum node-v22.23.2-linux-x64.tar.gz
+2026-Aug-17 16:21:30 #12 2.031 mise node@22.23.2    [3/3] extract node-v22.23.2-linux-x64.tar.gz
+2026-Aug-17 16:21:30 #12 ...
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #11 [railpack] loading secrets
+2026-Aug-17 16:21:30 #11 resolve docker.io/library/alpine:latest 6.1s done
+2026-Aug-17 16:21:30 #11 sha256:55afa1ecc21d2bb5e5045f32dafee56272ffd89860bac26f6c32123439af26a4 3.85MB / 3.85MB 0.9s done
+2026-Aug-17 16:21:30 #11 DONE 7.6s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #13 install apt packages: curl wget
+2026-Aug-17 16:21:30 #13 0.967 Hit:1 http://deb.debian.org/debian bookworm InRelease
+2026-Aug-17 16:<REDACTED>@22.23.2    [3/3] node -v
+2026-Aug-17 16:21:30 #12 4.799 mise node@22.23.2    [3/3] v22.23.2
+2026-Aug-17 16:21:30 #12 4.801 mise node@22.23.2    [3/3] npm -v
+2026-Aug-17 16:21:30 #12 5.050 mise node@22.23.2    [3/3] 10.9.8
+2026-Aug-17 16:21:30 #12 5.065 mise node@22.23.2    [3/3] enable corepack shims
+2026-Aug-17 16:21:30 #12 7.321 mise node@22.23.2  ✓ installed
+2026-Aug-17 16:21:30 #12 DONE 12.5s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #13 install apt packages: curl wget
+2026-Aug-17 16:21:30 #13 7.872 Fetched 3429 kB in 0s (17.3 MB/s)
+2026-Aug-17 16:21:30 #13 12.45 Selecting previously unselected package krb5-locales.
+2026-Aug-17 16:21:30 #13 12.45 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6623 files and directories currently installed.)
+2026-Aug-17 16:21:30 #13 12.47 Preparing to unpack .../00-krb5-locales_1.20.1-2+deb12u5_all.deb ...
+2026-Aug-17 16:21:30 #13 12.55 Unpacking krb5-locales (1.20.1-2+deb12u5) ...
+2026-Aug-17 16:21:30 #13 ...
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #15 [railpack] hash used secrets
+2026-Aug-17 16:21:30 #15 DONE 1.7s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #13 install apt packages: curl wget
+2026-Aug-17 16:21:30 #13 13.30 Selecting previously unselected package libpsl5:amd64.
+2026-Aug-17 16:21:30 #13 13.31 Preparing to unpack .../01-libpsl5_0.21.2-1_amd64.deb ...
+2026-Aug-17 16:21:30 #13 13.49 Unpacking libpsl5:amd64 (0.21.2-1) ...
+2026-Aug-17 16:21:30 #13 13.92 Selecting previously unselected package wget.
+2026-Aug-17 16:21:30 #13 13.93 Preparing to unpack .../02-wget_1.21.3-1+deb12u1_amd64.deb ...
+2026-Aug-17 16:21:30 #13 14.05 Unpacking wget (1.21.3-1+deb12u1) ...
+2026-Aug-17 16:21:30 #13 ...
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #16 copy / /app
+2026-Aug-17 16:21:30 #16 DONE 2.2s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #17 [railpack] copy used secrets hash
+2026-Aug-17 16:21:30 #17 ...
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #18 copy /mise/shims
+2026-Aug-17 16:21:30 #18 DONE 3.5s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #13 install apt packages: curl wget
+2026-Aug-17 16:21:30 #13 17.11 Selecting previously unselected package libbrotli1:amd64.
+2026-Aug-17 16:21:30 #13 17.12 Preparing to unpack .../03-libbrotli1_1.0.9-2+b6_amd64.deb ...
+2026-Aug-17 16:21:30 #13 17.80 Unpacking libbrotli1:amd64 (1.0.9-2+b6) ...
+2026-Aug-17 16:21:30 #13 ...
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #17 [railpack] copy used secrets hash
+2026-Aug-17 16:21:30 #17 DONE 4.2s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #19 copy /mise/installs
+2026-Aug-17 16:21:30 #19 ...
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #20 copy package.json
+2026-Aug-17 16:21:30 #20 DONE 4.5s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #13 install apt packages: curl wget
+2026-Aug-17 16:21:30 #13 19.45 Selecting previously unselected package libkrb5support0:amd64.
+2026-Aug-17 16:21:30 #13 19.45 Preparing to unpack .../04-libkrb5support0_1.20.1-2+deb12u5_amd64.deb ...
+2026-Aug-17 16:21:30 #13 19.55 Unpacking libkrb5support0:amd64 (1.20.1-2+deb12u5) ...
+2026-Aug-17 16:21:30 #13 20.45 Selecting previously unselected package libk5crypto3:amd64.
+2026-Aug-17 16:21:30 #13 20.46 Preparing to unpack .../05-libk5crypto3_1.20.1-2+deb12u5_amd64.deb ...
+2026-Aug-17 16:21:30 #13 20.56 Unpacking libk5crypto3:amd64 (1.20.1-2+deb12u5) ...
+2026-Aug-17 16:21:30 #13 28.24 Selecting previously unselected package libkeyutils1:amd64.
+2026-Aug-17 16:21:30 #13 28.24 Preparing to unpack .../06-libkeyutils1_1.6.3-2_amd64.deb ...
+2026-Aug-17 16:21:30 #13 29.55 Unpacking libkeyutils1:amd64 (1.6.3-2) ...
+2026-Aug-17 16:21:30 #13 ...
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #19 copy /mise/installs
+2026-Aug-17 16:21:30 #19 DONE 11.5s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #21 npm i -g corepack@latest && corepack enable && corepack prepare --activate
+2026-Aug-17 16:21:30 #21 ...
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #22 copy /usr/local/bin/mise
+2026-Aug-17 16:21:30 #22 DONE 4.9s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #23 copy /etc/mise/config.toml
+2026-Aug-17 16:21:30 #23 DONE 2.2s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #13 install apt packages: curl wget
+2026-Aug-17 16:21:30 #13 30.13 Selecting previously unselected package libkrb5-3:amd64.
+2026-Aug-17 16:21:30 #13 30.13 Preparing to unpack .../07-libkrb5-3_1.20.1-2+deb12u5_amd64.deb ...
+2026-Aug-17 16:21:30 #13 30.29 Unpacking libkrb5-3:amd64 (1.20.1-2+deb12u5) ...
+2026-Aug-17 16:21:30 #13 32.40 Selecting previously unselected package libgssapi-krb5-2:amd64.
+2026-Aug-17 16:21:30 #13 32.40 Preparing to unpack .../08-libgssapi-krb5-2_1.20.1-2+deb12u5_amd64.deb ...
+2026-Aug-17 16:21:30 #13 34.82 Unpacking libgssapi-krb5-2:amd64 (1.20.1-2+deb12u5) ...
+2026-Aug-17 16:21:30 #13 36.43 Selecting previously unselected package libsasl2-modules-db:amd64.
+2026-Aug-17 16:21:30 #13 36.43 Preparing to unpack .../09-libsasl2-modules-db_2.1.28+dfsg-10_amd64.deb ...
+2026-Aug-17 16:21:30 #13 36.63 Unpacking libsasl2-modules-db:amd64 (2.1.28+dfsg-10) ...
+2026-Aug-17 16:21:30 #13 ...
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #24 copy /root/.local/state/mise
+2026-Aug-17 16:21:30 #24 DONE 2.2s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #13 install apt packages: curl wget
+2026-Aug-17 16:21:30 #13 38.81 Selecting previously unselected package libsasl2-2:amd64.
+2026-Aug-17 16:21:30 #13 38.81 Preparing to unpack .../10-libsasl2-2_2.1.28+dfsg-10_amd64.deb ...
+2026-Aug-17 16:21:30 #13 39.00 Unpacking libsasl2-2:amd64 (2.1.28+dfsg-10) ...
+2026-Aug-17 16:21:30 #13 40.12 Selecting previously unselected package libldap-2.5-0:amd64.
+2026-Aug-17 16:21:30 #13 40.12 Preparing to unpack .../11-libldap-2.5-0_2.5.13+dfsg-5_amd64.deb ...
+2026-Aug-17 16:21:30 #13 40.25 Unpacking libldap-2.5-0:amd64 (2.5.13+dfsg-5) ...
+2026-Aug-17 16:21:30 #13 41.04 Selecting previously unselected package libnghttp2-14:amd64.
+2026-Aug-17 16:21:30 #13 41.04 Preparing to unpack .../12-libnghttp2-14_1.52.0-1+deb12u3_amd64.deb ...
+2026-Aug-17 16:21:30 #13 41.10 Unpacking libnghttp2-14:amd64 (1.52.0-1+deb12u3) ...
+2026-Aug-17 16:21:30 #13 ...
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #21 npm i -g corepack@latest && corepack enable && corepack prepare --activate
+2026-Aug-17 16:21:30 #21 10.35 npm warn config production Use `--omit=dev` instead.
+2026-Aug-17 16:21:30 #21 20.20
+2026-Aug-17 16:21:30 #21 20.20 changed 1 package in 10s
+2026-Aug-17 16:21:30 #21 20.34 Reshimming mise 22.23.2...
+2026-Aug-17 16:21:30 #21 ...
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #13 install apt packages: curl wget
+2026-Aug-17 16:21:30 #13 41.58 Selecting previously unselected package librtmp1:amd64.
+2026-Aug-17 16:21:30 #13 41.59 Preparing to unpack .../13-librtmp1_2.4+20151223.gitfa8646d.1-2+b2_amd64.deb ...
+2026-Aug-17 16:21:30 #13 41.63 Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b2) ...
+2026-Aug-17 16:21:30 #13 42.08 Selecting previously unselected package libssh2-1:amd64.
+2026-Aug-17 16:21:30 #13 42.08 Preparing to unpack .../14-libssh2-1_1.10.0-3+b1_amd64.deb ...
+2026-Aug-17 16:21:30 #13 42.14 Unpacking libssh2-1:amd64 (1.10.0-3+b1) ...
+2026-Aug-17 16:21:30 #13 42.51 Selecting previously unselected package libcurl4:amd64.
+2026-Aug-17 16:21:30 #13 42.52 Preparing to unpack .../15-libcurl4_7.88.1-10+deb12u15_amd64.deb ...
+2026-Aug-17 16:21:30 #13 42.55 Unpacking libcurl4:amd64 (7.88.1-10+deb12u15) ...
+2026-Aug-17 16:21:30 #13 42.91 Selecting previously unselected package curl.
+2026-Aug-17 16:21:30 #13 42.91 Preparing to unpack .../16-curl_7.88.1-10+deb12u15_amd64.deb ...
+2026-Aug-17 16:21:30 #13 42.94 Unpacking curl (7.88.1-10+deb12u15) ...
+2026-Aug-17 16:21:30 #13 43.23 Selecting previously unselected package libldap-common.
+2026-Aug-17 16:21:30 #13 43.24 Preparing to unpack .../17-libldap-common_2.5.13+dfsg-5_all.deb ...
+2026-Aug-17 16:21:30 #13 43.26 Unpacking libldap-common (2.5.13+dfsg-5) ...
+2026-Aug-17 16:21:30 #13 46.01 Selecting previously unselected package libsasl2-modules:amd64.
+2026-Aug-17 16:21:30 #13 46.01 Preparing to unpack .../18-libsasl2-modules_2.1.28+dfsg-10_amd64.deb ...
+2026-Aug-17 16:21:30 #13 46.11 Unpacking libsasl2-modules:amd64 (2.1.28+dfsg-10) ...
+2026-Aug-17 16:21:30 #13 ...
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #21 npm i -g corepack@latest && corepack enable && corepack prepare --activate
+2026-Aug-17 16:21:30 #21 20.76 Preparing pnpm@10.26.1 for immediate activation...
+2026-Aug-17 16:21:30 #21 DONE 25.4s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #13 install apt packages: curl wget
+2026-Aug-17 16:21:30 #13 46.50 Selecting previously unselected package publicsuffix.
+2026-Aug-17 16:21:30 #13 46.50 Preparing to unpack .../19-publicsuffix_20230209.2326-1_all.deb ...
+2026-Aug-17 16:21:30 #13 46.54 Unpacking publicsuffix (20230209.2326-1) ...
+2026-Aug-17 16:21:30 #13 47.87 Setting up libkeyutils1:amd64 (1.6.3-2) ...
+2026-Aug-17 16:21:30 #13 48.25 Setting up libpsl5:amd64 (0.21.2-1) ...
+2026-Aug-17 16:21:30 #13 48.66 Setting up wget (1.21.3-1+deb12u1) ...
+2026-Aug-17 16:21:30 #13 ...
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #25 mkdir -p /app/node_modules/.cache
+2026-Aug-17 16:21:30 #25 DONE 2.9s
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #13 install apt packages: curl wget
+2026-Aug-17 16:21:30 #13 49.47 Setting up libbrotli1:amd64 (1.0.9-2+b6) ...
+2026-Aug-17 16:21:30 #13 50.16 Setting up libsasl2-modules:amd64 (2.1.28+dfsg-10) ...
+2026-Aug-17 16:21:30 #13 50.50 Setting up libnghttp2-14:amd64 (1.52.0-1+deb12u3) ...
+2026-Aug-17 16:21:30 #13 50.91 Setting up krb5-locales (1.20.1-2+deb12u5) ...
+2026-Aug-17 16:21:30 #13 51.18 Setting up libldap-common (2.5.13+dfsg-5) ...
+2026-Aug-17 16:21:30 #13 51.59 Setting up libkrb5support0:amd64 (1.20.1-2+deb12u5) ...
+2026-Aug-17 16:21:30 #13 51.92 Setting up libsasl2-modules-db:amd64 (2.1.28+dfsg-10) ...
+2026-Aug-17 16:21:30 #13 52.30 Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b2) ...
+2026-Aug-17 16:21:30 #13 52.54 Setting up libk5crypto3:amd64 (1.20.1-2+deb12u5) ...
+2026-Aug-17 16:21:30 #13 53.84 Setting up libsasl2-2:amd64 (2.1.28+dfsg-10) ...
+2026-Aug-17 16:21:30 #13 ...
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #26 pnpm install --frozen-lockfile --prefer-offline
+2026-Aug-17 16:21:30 #26 2.686 Scope: all 9 workspace projects
+2026-Aug-17 16:21:30 #26 3.058  ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with <ROOT>/package.json
+2026-Aug-17 16:21:30 #26 3.058
+2026-Aug-17 16:21:30 #26 3.058 Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
+2026-Aug-17 16:21:30 #26 3.058
+2026-Aug-17 16:21:30 #26 3.058   Failure reason:
+2026-Aug-17 16:21:30 #26 3.058   specifiers in the lockfile don't match specifiers in package.json:
+2026-Aug-17 16:21:30 #26 3.058 * 3 dependencies were added: prettier@^3.9.6, typescript@~5.9.3, @replit/connectors-sdk@^0.4.1
+2026-Aug-17 16:21:30 #26 3.058
+2026-Aug-17 16:21:30 #26 ERROR: process "pnpm install --frozen-lockfile --prefer-offline" did not complete successfully: exit code: 1
+2026-Aug-17 16:21:30 
+2026-Aug-17 16:21:30 #13 install apt packages: curl wget
+2026-Aug-17 16:21:30 #13 CANCELED
+2026-Aug-17 16:21:30 ------
+2026-Aug-17 16:21:30 > pnpm install --frozen-lockfile --prefer-offline:
+2026-Aug-17 16:21:30 2.686 Scope: all 9 workspace projects
+2026-Aug-17 16:21:30 3.058  ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with <ROOT>/package.json
+2026-Aug-17 16:21:30 3.058
+2026-Aug-17 16:21:30 3.058 Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
+2026-Aug-17 16:21:30 3.058
+2026-Aug-17 16:21:30 3.058   Failure reason:
+2026-Aug-17 16:21:30 3.058   specifiers in the lockfile don't match specifiers in package.json:
+2026-Aug-17 16:21:30 3.058 * 3 dependencies were added: prettier@^3.9.6, typescript@~5.9.3, @replit/connectors-sdk@^0.4.1
+2026-Aug-17 16:21:30 3.058
+2026-Aug-17 16:21:30 ------
+2026-Aug-17 16:21:30 ERROR: failed to build: failed to solve: process "pnpm install --frozen-lockfile --prefer-offline" did not complete successfully: exit code: 1
+2026-Aug-17 16:21:30 exit status 1
+2026-Aug-17 16:21:30 [DEBUG] Error type: App\Exceptions\DeploymentException
+2026-Aug-17 16:21:30 [DEBUG] Error code: 0
+2026-Aug-17 16:21:30 [DEBUG] Location: /var/www/html/app/Traits/ExecuteRemoteCommand.php:243
+2026-Aug-17 16:21:30 [DEBUG] Stack trace (first 5 lines):
+2026-Aug-17 16:21:30 [DEBUG] #0 /var/www/html/app/Traits/ExecuteRemoteCommand.php(107): App\Jobs\ApplicationDeploymentJob->executeCommandWithProcess()
+2026-Aug-17 16:21:30 [DEBUG] #1 /var/www/html/vendor/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php(275): App\Jobs\ApplicationDeploymentJob->{closure:App\Traits\ExecuteRemoteCommand::execute_remote_command():72}()
+2026-Aug-17 16:21:30 [DEBUG] #2 /var/www/html/app/Traits/ExecuteRemoteCommand.php(72): Illuminate\Support\Collection->each()
+2026-Aug-17 16:21:30 [DEBUG] #3 /var/www/html/app/Jobs/ApplicationDeploymentJob.php(3017): App\Jobs\ApplicationDeploymentJob->execute_remote_command()
+2026-Aug-17 16:21:31 [DEBUG] #4 /var/www/html/app/Jobs/ApplicationDeploymentJob.php(993): App\Jobs\ApplicationDeploymentJob->build_railpack_image()
+2026-Aug-17 16:21:31 ========================================
+2026-Aug-17 16:21:31 Deployment failed. Removing the new version of your application.
+2026-Aug-17 16:21:32 Gracefully shutting down build container: n0thh9szns9cxzgavhuj9t4e
+2026-Aug-17 16:21:35 [DEBUG] [CMD]: docker stop --timeout=30 n0thh9szns9cxzgavhuj9t4e
+2026-Aug-17 16:21:35 [DEBUG] n0thh9szns9cxzgavhuj9t4e

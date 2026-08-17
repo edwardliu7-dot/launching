@@ -170,10 +170,8 @@ export function SmartisaLaunch() {
       <section className="stage">
         <header className="topline"><span className="mark"><i /> SMARTISA / CEREMONY CONTROL</span><button className="replay" onClick={reset} aria-label="Replay ceremony">R&nbsp; / &nbsp;Replay</button></header>
         {state === "standby" && <>
-          <div className="eyebrow">Agenda 01 &nbsp;—&nbsp; Momen Peresmian</div>
           <h1 className="title">PELUNCURAN RESMI APLIKASI SMARTISA</h1>
-          <p className="subtitle">HUT KEMERDEKAAN RI KE-81</p>
-          <div className="launch-wrap"><button className="launch" onClick={launch} aria-label="Touch to launch Smartisa"><span>TOUCH<br />TO LAUNCH</span><small>SENTUH UNTUK MERESMIKAN</small></button></div>
+           <div className="launch-wrap"><button className="launch" onClick={launch} aria-label="Luncurkan Smartisa"><span>LUNCURKAN</span></button></div>
           <p className="hint">TAP CONTROL &nbsp;·&nbsp; PRESS <b className="kbd">SPACE</b> TO ACTIVATE</p>
         </>}
         {state === "countdown" && <><div className="eyebrow">Protokol Peluncuran Aktif</div><div className="count" aria-label={`Countdown ${count}`}>{count > 0 ? count : "—"}</div><div className="count-label">INDONESIA MAJU / SMARTISA</div></>}

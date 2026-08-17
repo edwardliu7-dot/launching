@@ -130,8 +130,8 @@ function SmartisaCeremony() {
   }, [burst, sound, state]);
 
   useEffect(() => {
-    document.title = 'Smartisa | Peluncuran Resmi — HUT RI ke-81';
-    const description = 'Official Smartisa launch ceremony for HUT Kemerdekaan Republik Indonesia ke-81.';
+    document.title = 'Smartisa | Peluncuran Resmi';
+    const description = 'Official Smartisa launch ceremony.';
     let meta = document.querySelector<HTMLMetaElement>('meta[name="description"]');
     if (!meta) {
       meta = document.createElement('meta');
@@ -225,9 +225,7 @@ function SmartisaCeremony() {
         </header>
         {state === 'standby' && (
           <>
-            <div className="ceremony-eyebrow" data-testid="text-ceremony-agenda">Agenda 01 &nbsp;—&nbsp; Momen Peresmian</div>
             <h1 className="ceremony-title" data-testid="text-launch-title">PELUNCURAN RESMI APLIKASI SMARTISA</h1>
-            <p className="ceremony-subtitle" data-testid="text-hut-title">HUT KEMERDEKAAN RI KE-81</p>
             <div className="ceremony-launch-wrap">
               <button
                 className="ceremony-launch"
@@ -242,11 +240,10 @@ function SmartisaCeremony() {
                     event.preventDefault();
                   }
                 }}
-                aria-label="Touch to launch Smartisa"
+                aria-label="Luncurkan Smartisa"
                 data-testid="button-launch"
               >
-                <span>TOUCH<br />TO LAUNCH</span>
-                <small>SENTUH UNTUK MERESMIKAN</small>
+                <span>LUNCURKAN</span>
               </button>
             </div>
           </>

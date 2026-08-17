@@ -288,9 +288,10 @@ button { font: inherit; }
 .ceremony-launch span {
   display: block;
   font-family: var(--app-font-mono);
-  font-size: clamp(18px, 3vmin, 30px);
-  font-weight: 700;
+  font-size: clamp(26px, 4.5vmin, 56px);
+  font-weight: 900;
   letter-spacing: .12em;
+  text-shadow: 0 1px 0 rgba(255, 244, 189, .45);
 }
 .ceremony-launch small {
   display: block;

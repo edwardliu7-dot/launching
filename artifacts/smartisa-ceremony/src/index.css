@@ -271,17 +271,17 @@ button { font: inherit; }
   user-select: none;
   width: 100%;
   height: 100%;
-  border: 1px solid rgba(230, 185, 90, .82);
+  border: 2px solid #ffe7a0;
   border-radius: 50%;
-  background: radial-gradient(circle at 50% 42%, #ed2830 0, #aa1019 35%, #450a10 72%, #150c0f 100%);
-  box-shadow: inset 0 0 35px rgba(255, 210, 135, .25), 0 0 60px rgba(215, 25, 32, .25);
-  color: var(--ceremony-white);
+  background: radial-gradient(circle at 50% 38%, #fff4bd 0, #f5cf5b 33%, #d49b22 68%, #93620b 100%);
+  box-shadow: inset 0 0 35px rgba(255, 255, 220, .52), 0 0 60px rgba(230, 185, 90, .42);
+  color: #231a08;
   cursor: pointer;
   animation: ceremony-breathe 2.8s ease-in-out infinite;
   transition: transform .2s ease, box-shadow .2s ease;
 }
 .ceremony-launch:hover {
-  box-shadow: inset 0 0 35px rgba(255, 210, 135, .35), 0 0 85px rgba(215, 25, 32, .5);
+  box-shadow: inset 0 0 35px rgba(255, 255, 220, .72), 0 0 85px rgba(230, 185, 90, .75);
   transform: scale(1.04);
 }
 .ceremony-launch:active { transform: scale(.96); }
@@ -295,7 +295,7 @@ button { font: inherit; }
 .ceremony-launch small {
   display: block;
   margin-top: 12px;
-  color: #f5d99a;
+  color: #4b3508;
   font-size: 9px;
   letter-spacing: .16em;
 }

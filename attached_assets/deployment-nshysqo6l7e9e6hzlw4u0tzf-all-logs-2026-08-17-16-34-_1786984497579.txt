@@ -1,0 +1,373 @@
+2026-Aug-17 16:31:17 Docker 29.6.1 with BuildKit and Buildx detected on deployment server (localhost).
+2026-Aug-17 16:31:17 Starting deployment of edwardliu7-dot/launching:main to localhost.
+2026-Aug-17 16:31:17 Preparing container with helper image: docker.io/coollabsio/coolify-helper:1.0.15
+2026-Aug-17 16:31:17 [DEBUG] [CMD]: docker stop --timeout=30 nshysqo6l7e9e6hzlw4u0tzf
+2026-Aug-17 16:31:17 [DEBUG] Error response from daemon: No such container: nshysqo6l7e9e6hzlw4u0tzf
+2026-Aug-17 16:31:19 [DEBUG] [CMD]: docker run -d --network 'coolify' --name nshysqo6l7e9e6hzlw4u0tzf  --rm -v /root/.docker/buildx:/root/.docker/buildx -v /var/run/docker.sock:/var/run/docker.sock docker.io/coollabsio/coolify-helper:1.0.15
+2026-Aug-17 16:31:19 [DEBUG] 93b44452e9f977d3f8d8f9ce340b879561337fe5a63b8d151f33e7001a81047e
+2026-Aug-17 16:31:23 [DEBUG] [CMD]: docker exec nshysqo6l7e9e6hzlw4u0tzf bash -c 'GIT_SSH_COMMAND="ssh -o ConnectTimeout=30 -p 22 -o Port=22 -o LogLevel=ERROR -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git ls-remote '\''https://x-access-token:<REDACTED>@github.com/edwardliu7-dot/launching.git'\'' '\''refs/heads/main'\'''
+2026-Aug-17 16:31:23 [DEBUG] cab3abced6f78d20e05272973d9bcf9d674c2018	refs/heads/main
+2026-Aug-17 16:31:23 Image not found (9x96bf8k1wei43lhvrh7szhb:cab3abced6f78d20e05272973d9bcf9d674c2018). Building new image.
+2026-Aug-17 16:31:24 ----------------------------------------
+2026-Aug-17 16:31:24 Importing edwardliu7-dot/launching:main (commit sha cab3abced6f78d20e05272973d9bcf9d674c2018) to /artifacts/nshysqo6l7e9e6hzlw4u0tzf.
+2026-Aug-17 16:31:24 [DEBUG] [CMD]: docker exec nshysqo6l7e9e6hzlw4u0tzf bash -c 'git -c '\''url.https://x-access-token:<REDACTED>@github.com/.insteadOf=https://github.com/'\'' -c http.version=HTTP/1.1 clone --depth=1 --recurse-submodules --shallow-submodules -b '\''main'\'' '\''https:<REDACTED>@github.com/edwardliu7-dot/launching.git'\'' '\''/artifacts/nshysqo6l7e9e6hzlw4u0tzf'\'' && cd '\''/artifacts/nshysqo6l7e9e6hzlw4u0tzf'\'' && GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git -c '\''url.https://x-access-token:<REDACTED>@github.com/.insteadOf=https://github.com/'\'' -c http.version=HTTP/1.1 fetch --depth=1 origin '\''cab3abced6f78d20e05272973d9bcf9d674c2018'\'' && git -c '\''url.https:<REDACTED>@github.com/.insteadOf=https://github.com/'\'' -c http.version=HTTP/1.1 -c advice.detachedHead=false checkout '\''cab3abced6f78d20e05272973d9bcf9d674c2018'\'' >/dev/null 2>&1 && cd '\''/artifacts/nshysqo6l7e9e6hzlw4u0tzf'\'' && if [ -f .gitmodules ]; then git -c '\''url.https:<REDACTED>@github.com/.insteadOf=https://github.com/'\'' -c http.version=HTTP/1.1 submodule sync && GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git -c '\''url.https:<REDACTED>@github.com/.insteadOf=https://github.com/'\'' -c http.version=HTTP/1.1 submodule update --init --recursive --depth=1; fi && cd '\''/artifacts/nshysqo6l7e9e6hzlw4u0tzf'\'' && GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git -c '\''url.https:<REDACTED>@github.com/.insteadOf=https://github.com/'\'' -c http.version=HTTP/1.1 lfs pull'
+2026-Aug-17 16:<REDACTED>@10.26.1 with Corepack
+2026-Aug-17 16:31:34 [DEBUG] ⚠ No start command detected. Specify a start command: https://railpack.com/config/file
+2026-Aug-17 16:<REDACTED>@sha256:ba4c430961d9ee3215c64807727a4b11e2198daac31250e9db9eaf9cee4624d6
+2026-Aug-17 16:31:37 [DEBUG] #3 resolve ghcr.io/railwayapp/railpack-frontend:v0.23.0@sha256:ba4c430961d9ee3215c64807727a4b11e2198daac31250e9db9eaf9cee4624d6 0.1s done
+2026-Aug-17 16:31:37 [DEBUG] #3 CACHED
+2026-Aug-17 16:31:38 [DEBUG] #4 load build definition from railpack-plan.json
+2026-Aug-17 16:31:38 [DEBUG] #4 transferring dockerfile: 4.77kB done
+2026-Aug-17 16:31:38 [DEBUG] #4 DONE 0.6s
+2026-Aug-17 16:31:40 [DEBUG] #5 [railpack] secrets hash
+2026-Aug-17 16:31:40 [DEBUG] #5 DONE 0.0s
+2026-Aug-17 16:31:40 [DEBUG] 
+2026-Aug-17 16:31:40 [DEBUG] #6 loading .
+2026-Aug-17 16:31:40 [DEBUG] #6 DONE 0.0s
+2026-Aug-17 16:31:40 [DEBUG] 
+2026-Aug-17 16:31:40 [DEBUG] #7 docker-image://ghcr.io/railwayapp/railpack-builder:mise-2026.3.17
+2026-Aug-17 16:31:40 [DEBUG] #7 resolve ghcr.io/railwayapp/railpack-builder:mise-2026.3.17
+2026-Aug-17 16:31:41 [DEBUG] #7 resolve ghcr.io/railwayapp/railpack-builder:mise-2026.3.17 0.8s done
+2026-Aug-17 16:31:41 [DEBUG] #7 DONE 0.9s
+2026-Aug-17 16:31:41 [DEBUG] 
+2026-Aug-17 16:31:41 [DEBUG] #8 docker-image://ghcr.io/railwayapp/railpack-runtime:mise-2026.3.17
+2026-Aug-17 16:31:41 [DEBUG] #8 resolve ghcr.io/railwayapp/railpack-runtime:mise-2026.3.17 0.8s done
+2026-Aug-17 16:31:41 [DEBUG] #8 CACHED
+2026-Aug-17 16:31:41 [DEBUG] 
+2026-Aug-17 16:31:41 [DEBUG] #9 mkdir /etc/mise
+2026-Aug-17 16:31:41 [DEBUG] #9 CACHED
+2026-Aug-17 16:31:41 [DEBUG] 
+2026-Aug-17 16:31:41 [DEBUG] #10 create mise config
+2026-Aug-17 16:31:41 [DEBUG] #10 CACHED
+2026-Aug-17 16:31:41 [DEBUG] 
+2026-Aug-17 16:31:41 [DEBUG] #5 [railpack] secrets hash
+2026-Aug-17 16:31:42 [DEBUG] #5 DONE 1.7s
+2026-Aug-17 16:31:42 [DEBUG] 
+2026-Aug-17 16:31:42 [DEBUG] #6 loading .
+2026-Aug-17 16:31:42 [DEBUG] #6 transferring context: 1.58MB 0.3s
+2026-Aug-17 16:31:43 [DEBUG] #6 transferring context: 3.67MB 0.7s done
+2026-Aug-17 16:31:43 [DEBUG] #6 DONE 2.3s
+2026-Aug-17 16:31:43 [DEBUG] 
+2026-Aug-17 16:31:43 [DEBUG] #11 install mise packages: node
+2026-Aug-17 16:31:43 [DEBUG] #11 1.820 mise node@22.23.2    [1/3] install
+2026-Aug-17 16:31:43 [DEBUG] #11 1.820 mise node@22.23.2    [1/3] download node-v22.23.2-linux-x64.tar.gz
+2026-Aug-17 16:31:43 [DEBUG] #11 2.786 mise node@22.23.2    [2/3] generate checksum node-v22.23.2-linux-x64.tar.gz
+2026-Aug-17 16:31:43 [DEBUG] #11 2.869 mise node@22.23.2    [3/3] extract node-v22.23.2-linux-x64.tar.gz
+2026-Aug-17 16:31:47 [DEBUG] #11 6.387 mise node@22.23.2    [3/3] node -v
+2026-Aug-17 16:31:47 [DEBUG] #11 6.401 mise node@22.23.2    [3/3] v22.23.2
+2026-Aug-17 16:31:47 [DEBUG] #11 6.404 mise node@22.23.2    [3/3] npm -v
+2026-Aug-17 16:31:47 [DEBUG] #11 6.705 mise node@22.23.2    [3/3] 10.9.8
+2026-Aug-17 16:31:47 [DEBUG] #11 6.722 mise node@22.23.2    [3/3] enable corepack shims
+2026-Aug-17 16:31:48 [DEBUG] #11 7.054 mise node@22.23.2  ✓ installed
+2026-Aug-17 16:31:48 [DEBUG] #11 ...
+2026-Aug-17 16:31:48 [DEBUG] 
+2026-Aug-17 16:31:48 [DEBUG] #12 install apt packages: curl wget
+2026-Aug-17 16:31:48 [DEBUG] #12 1.446 Hit:1 http://deb.debian.org/debian bookworm InRelease
+2026-Aug-17 16:<REDACTED>@0.27.3/node_modules/esbuild postinstall$ node install.js
+2026-Aug-17 16:32:45 [DEBUG] #15 45.54 .../esbuild@0.27.3/node_modules/esbuild postinstall: Done
+2026-Aug-17 16:32:52 [DEBUG] #15 ...
+2026-Aug-17 16:32:52 [DEBUG] 
+2026-Aug-17 16:32:52 [DEBUG] #12 install apt packages: curl wget
+2026-Aug-17 16:32:52 [DEBUG] #12 DONE 72.0s
+2026-Aug-17 16:32:53 [DEBUG] #15 pnpm install
+2026-Aug-17 16:32:53 [DEBUG] #15 52.49
+2026-Aug-17 16:32:53 [DEBUG] #15 52.49 dependencies:
+2026-Aug-17 16:32:53 [DEBUG] #15 52.49 + @replit/connectors-sdk 0.4.2
+2026-Aug-17 16:32:53 [DEBUG] #15 52.49
+2026-Aug-17 16:32:53 [DEBUG] #15 52.49 devDependencies:
+2026-Aug-17 16:32:53 [DEBUG] #15 52.49 + prettier 3.9.6
+2026-Aug-17 16:32:53 [DEBUG] #15 52.49 + typescript 5.9.3
+2026-Aug-17 16:32:53 [DEBUG] #15 52.49
+2026-Aug-17 16:32:53 [DEBUG] #15 52.65 . preinstall$ sh -c 'rm -f package-lock.json yarn.lock; case "$npm_config_user_agent" in pnpm/*) ;; *) echo "Use pnpm instead" >&2; exit 1 ;; esac'
+2026-Aug-17 16:32:53 [DEBUG] #15 52.68 . preinstall: Done
+2026-Aug-17 16:32:53 [DEBUG] #15 52.96 Done in 45.6s using pnpm v10.26.1
+2026-Aug-17 16:32:57 [DEBUG] #15 ...
+2026-Aug-17 16:32:57 [DEBUG] 
+2026-Aug-17 16:32:57 [DEBUG] #16 copy /mise/shims
+2026-Aug-17 16:32:57 [DEBUG] #16 DONE 4.6s
+2026-Aug-17 16:32:57 [DEBUG] #17 copy /mise/installs
+2026-Aug-17 16:32:57 [DEBUG] #17 ...
+2026-Aug-17 16:32:57 [DEBUG] 
+2026-Aug-17 16:32:57 [DEBUG] #15 pnpm install
+2026-Aug-17 16:32:57 [DEBUG] #15 DONE 57.4s
+2026-Aug-17 16:32:57 [DEBUG] #18 copy / /app
+2026-Aug-17 16:33:02 [DEBUG] #18 DONE 4.9s
+2026-Aug-17 16:33:02 [DEBUG] 
+2026-Aug-17 16:33:02 [DEBUG] #17 copy /mise/installs
+2026-Aug-17 16:33:02 [DEBUG] #17 ...
+2026-Aug-17 16:33:02 [DEBUG] 
+2026-Aug-17 16:33:02 [DEBUG] #19 copy .
+2026-Aug-17 16:33:07 [DEBUG] #19 DONE 4.8s
+2026-Aug-17 16:33:07 [DEBUG] 
+2026-Aug-17 16:33:07 [DEBUG] #17 copy /mise/installs
+2026-Aug-17 16:33:07 [DEBUG] #17 ...
+2026-Aug-17 16:33:07 [DEBUG] 
+2026-Aug-17 16:33:07 [DEBUG] #20 pnpm run build
+2026-Aug-17 16:33:12 [DEBUG] #20 4.966
+2026-Aug-17 16:33:12 [DEBUG] #20 4.966 > workspace@0.0.0 build /app
+2026-Aug-17 16:33:12 [DEBUG] #20 4.966 > pnpm run typecheck && pnpm -r --if-present run build
+2026-Aug-17 16:33:12 [DEBUG] #20 4.966
+2026-Aug-17 16:33:13 [DEBUG] #20 ...
+2026-Aug-17 16:33:13 [DEBUG] 
+2026-Aug-17 16:33:13 [DEBUG] #17 copy /mise/installs
+2026-Aug-17 16:33:13 [DEBUG] #17 DONE 15.7s
+2026-Aug-17 16:33:13 [DEBUG] #21 copy /usr/local/bin/mise
+2026-Aug-17 16:33:16 [DEBUG] #21 DONE 3.6s
+2026-Aug-17 16:33:16 [DEBUG] 
+2026-Aug-17 16:33:16 [DEBUG] #20 pnpm run build
+2026-Aug-17 16:33:16 [DEBUG] #20 6.561
+2026-Aug-17 16:33:16 [DEBUG] #20 6.561 > workspace@0.0.0 typecheck /app
+2026-Aug-17 16:33:16 [DEBUG] #20 6.561 > pnpm run typecheck:libs && pnpm -r --filter "./artifacts/**" --filter "./scripts" --if-present run typecheck
+2026-Aug-17 16:33:16 [DEBUG] #20 6.561
+2026-Aug-17 16:33:16 [DEBUG] #20 7.710
+2026-Aug-17 16:33:16 [DEBUG] #20 7.710 > workspace@0.0.0 typecheck:libs /app
+2026-Aug-17 16:33:16 [DEBUG] #20 7.710 > tsc --build
+2026-Aug-17 16:33:16 [DEBUG] #20 7.710
+2026-Aug-17 16:33:18 [DEBUG] #20 ...
+2026-Aug-17 16:33:18 [DEBUG] 
+2026-Aug-17 16:33:18 [DEBUG] #22 copy /etc/mise/config.toml
+2026-Aug-17 16:33:18 [DEBUG] #22 DONE 1.0s
+2026-Aug-17 16:33:18 [DEBUG] 
+2026-Aug-17 16:33:18 [DEBUG] #23 copy /root/.local/state/mise
+2026-Aug-17 16:33:20 [DEBUG] #23 DONE 2.5s
+2026-Aug-17 16:33:20 [DEBUG] 
+2026-Aug-17 16:33:20 [DEBUG] #20 pnpm run build
+2026-Aug-17 16:33:27 [DEBUG] #20 20.42 Scope: 4 of 9 workspace projects
+2026-Aug-17 16:33:28 [DEBUG] #20 20.44 artifacts/api-server typecheck$ tsc -p tsconfig.json --noEmit
+2026-Aug-17 16:33:28 [DEBUG] #20 20.44 artifacts/mockup-sandbox typecheck$ tsc -p tsconfig.json --noEmit
+2026-Aug-17 16:33:35 [DEBUG] #20 28.25 artifacts/api-server typecheck: Done
+2026-Aug-17 16:33:35 [DEBUG] #20 28.26 artifacts/smartisa-ceremony typecheck$ tsc -p tsconfig.json --noEmit
+2026-Aug-17 16:34:13 [DEBUG] #20 65.88 artifacts/mockup-sandbox typecheck: Done
+2026-Aug-17 16:34:13 [DEBUG] #20 65.89 scripts typecheck$ tsc -p tsconfig.json --noEmit
+2026-Aug-17 16:34:13 [DEBUG] #20 66.38 artifacts/smartisa-ceremony typecheck: Done
+2026-Aug-17 16:34:16 [DEBUG] #20 69.36 scripts typecheck: Done
+2026-Aug-17 16:34:18 [DEBUG] #20 71.01 Scope: 8 of 9 workspace projects
+2026-Aug-17 16:34:18 [DEBUG] #20 71.06 artifacts/mockup-sandbox build$ vite build
+2026-Aug-17 16:34:20 [DEBUG] #20 72.47 artifacts/mockup-sandbox build: failed to load config from /app/artifacts/mockup-sandbox/vite.config.ts
+2026-Aug-17 16:34:20 [DEBUG] #20 72.47 artifacts/mockup-sandbox build: error during build:
+2026-Aug-17 16:34:20 [DEBUG] #20 72.48 artifacts/mockup-sandbox build: Error: PORT environment variable is required but was not provided.
+2026-Aug-17 16:34:20 [DEBUG] #20 72.48 artifacts/mockup-sandbox build:     at file:///app/artifacts/mockup-sandbox/node_modules/.vite-temp/vite.config.ts.timestamp-1786984459247-b87842cc42528.mjs:145:9
+2026-Aug-17 16:34:20 [DEBUG] #20 72.48 artifacts/mockup-sandbox build:     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+2026-Aug-17 16:34:20 [DEBUG] #20 72.48 artifacts/mockup-sandbox build:     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+2026-Aug-17 16:34:20 [DEBUG] #20 72.49 artifacts/mockup-sandbox build:     at async loadConfigFromBundledFile (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/chunks/config.js:35996:12)
+2026-Aug-17 16:34:20 [DEBUG] #20 72.49 artifacts/mockup-sandbox build:     at async bundleAndLoadConfigFile (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/chunks/config.js:35884:17)
+2026-Aug-17 16:34:20 [DEBUG] #20 72.49 artifacts/mockup-sandbox build:     at async loadConfigFromFile (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/chunks/config.js:35851:42)
+2026-Aug-17 16:34:20 [DEBUG] #20 72.49 artifacts/mockup-sandbox build:     at async resolveConfig (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/chunks/config.js:35500:22)
+2026-Aug-17 16:34:20 [DEBUG] #20 72.49 artifacts/mockup-sandbox build:     at async createBuilder (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/chunks/config.js:33955:19)
+2026-Aug-17 16:34:20 [DEBUG] #20 72.50 artifacts/mockup-sandbox build:     at async CAC.<anonymous> (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/cli.js:629:10)
+2026-Aug-17 16:34:20 [DEBUG] #20 72.54 artifacts/mockup-sandbox build: Failed
+2026-Aug-17 16:34:20 [DEBUG] #20 72.57 /app/artifacts/mockup-sandbox:
+2026-Aug-17 16:34:20 [DEBUG] #20 72.57  ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/mockup-sandbox@2.0.0 build: `vite build`
+2026-Aug-17 16:34:20 [DEBUG] #20 72.57 Exit status 1
+2026-Aug-17 16:34:20 [DEBUG] #20 72.69  ELIFECYCLE  Command failed with exit code 1.
+2026-Aug-17 16:34:21 [DEBUG] #20 ERROR: process "sh -c pnpm run build" did not complete successfully: exit code: 1
+2026-Aug-17 16:34:23 [DEBUG] ------
+2026-Aug-17 16:34:23 [DEBUG] > pnpm run build:
+2026-Aug-17 16:34:23 [DEBUG] 72.49 artifacts/mockup-sandbox build:     at async bundleAndLoadConfigFile (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/chunks/config.js:35884:17)
+2026-Aug-17 16:34:23 [DEBUG] 72.49 artifacts/mockup-sandbox build:     at async loadConfigFromFile (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/chunks/config.js:35851:42)
+2026-Aug-17 16:34:23 [DEBUG] 72.49 artifacts/mockup-sandbox build:     at async resolveConfig (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/chunks/config.js:35500:22)
+2026-Aug-17 16:34:23 [DEBUG] 72.49 artifacts/mockup-sandbox build:     at async createBuilder (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/chunks/config.js:33955:19)
+2026-Aug-17 16:34:23 [DEBUG] 72.50 artifacts/mockup-sandbox build:     at async CAC.<anonymous> (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/cli.js:629:10)
+2026-Aug-17 16:34:23 [DEBUG] 72.54 artifacts/mockup-sandbox build: Failed
+2026-Aug-17 16:34:23 [DEBUG] 72.57 /app/artifacts/mockup-sandbox:
+2026-Aug-17 16:34:23 [DEBUG] 72.57  ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/mockup-sandbox@2.0.0 build: `vite build`
+2026-Aug-17 16:34:23 [DEBUG] 72.57 Exit status 1
+2026-Aug-17 16:34:23 [DEBUG] 72.69  ELIFECYCLE  Command failed with exit code 1.
+2026-Aug-17 16:34:23 [DEBUG] ------
+2026-Aug-17 16:34:23 [DEBUG] ERROR: failed to build: failed to solve: process "sh -c pnpm run build" did not complete successfully: exit code: 1
+2026-Aug-17 16:34:23 [DEBUG] exit status 1
+2026-Aug-17 16:34:24 ========================================
+2026-Aug-17 16:34:24 Deployment failed: Command execution failed (exit code 1): docker exec nshysqo6l7e9e6hzlw4u0tzf bash -c 'bash /artifacts/build.sh'
+2026-Aug-17 16:34:24 Error: #0 building with "coolify-railpack" instance using docker-container driver
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #1 [internal] load build definition from railpack-plan.json
+2026-Aug-17 16:34:24 #1 transferring dockerfile:
+2026-Aug-17 16:34:24 #1 transferring dockerfile: 4.77kB done
+2026-Aug-17 16:34:24 #1 DONE 0.4s
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #2 resolve image config for docker-image://ghcr.io/railwayapp/railpack-frontend:v0.23.0
+2026-Aug-17 16:34:24 #2 DONE 0.9s
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #3 docker-image://ghcr.io/railwayapp/railpack-frontend:v0.23.0@sha256:ba4c430961d9ee3215c64807727a4b11e2198daac31250e9db9eaf9cee4624d6
+2026-Aug-17 16:34:24 #3 resolve ghcr.io/railwayapp/railpack-frontend:v0.23.0@sha256:ba4c430961d9ee3215c64807727a4b11e2198daac31250e9db9eaf9cee4624d6 0.1s done
+2026-Aug-17 16:34:24 #3 CACHED
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #4 load build definition from railpack-plan.json
+2026-Aug-17 16:34:24 #4 transferring dockerfile: 4.77kB done
+2026-Aug-17 16:34:24 #4 DONE 0.6s
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #5 [railpack] secrets hash
+2026-Aug-17 16:34:24 #5 DONE 0.0s
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #6 loading .
+2026-Aug-17 16:34:24 #6 DONE 0.0s
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #7 docker-image://ghcr.io/railwayapp/railpack-builder:mise-2026.3.17
+2026-Aug-17 16:34:24 #7 resolve ghcr.io/railwayapp/railpack-builder:mise-2026.3.17
+2026-Aug-17 16:34:24 #7 resolve ghcr.io/railwayapp/railpack-builder:mise-2026.3.17 0.8s done
+2026-Aug-17 16:34:24 #7 DONE 0.9s
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #8 docker-image://ghcr.io/railwayapp/railpack-runtime:mise-2026.3.17
+2026-Aug-17 16:34:24 #8 resolve ghcr.io/railwayapp/railpack-runtime:mise-2026.3.17 0.8s done
+2026-Aug-17 16:34:24 #8 CACHED
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #9 mkdir /etc/mise
+2026-Aug-17 16:34:24 #9 CACHED
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #10 create mise config
+2026-Aug-17 16:34:24 #10 CACHED
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #5 [railpack] secrets hash
+2026-Aug-17 16:34:24 #5 DONE 1.7s
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #6 loading .
+2026-Aug-17 16:34:24 #6 transferring context: 1.58MB 0.3s
+2026-Aug-17 16:34:24 #6 transferring context: 3.67MB 0.7s done
+2026-Aug-17 16:34:24 #6 DONE 2.3s
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #11 install mise packages: node
+2026-Aug-17 16:34:24 #11 1.820 mise node@22.23.2    [1/3] install
+2026-Aug-17 16:34:24 #11 1.820 mise node@22.23.2    [1/3] download node-v22.23.2-linux-x64.tar.gz
+2026-Aug-17 16:34:24 #11 2.786 mise node@22.23.2    [2/3] generate checksum node-v22.23.2-linux-x64.tar.gz
+2026-Aug-17 16:34:24 #11 2.869 mise node@22.23.2    [3/3] extract node-v22.23.2-linux-x64.tar.gz
+2026-Aug-17 16:34:24 #11 6.387 mise node@22.23.2    [3/3] node -v
+2026-Aug-17 16:34:24 #11 6.401 mise node@22.23.2    [3/3] v22.23.2
+2026-Aug-17 16:34:24 #11 6.404 mise node@22.23.2    [3/3] npm -v
+2026-Aug-17 16:34:24 #11 6.705 mise node@22.23.2    [3/3] 10.9.8
+2026-Aug-17 16:34:24 #11 6.722 mise node@22.23.2    [3/3] enable corepack shims
+2026-Aug-17 16:34:24 #11 7.054 mise node@22.23.2  ✓ installed
+2026-Aug-17 16:34:24 #11 ...
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #12 install apt packages: curl wget
+2026-Aug-17 16:34:24 #12 1.446 Hit:1 http://deb.debian.org/debian bookworm InRelease
+2026-Aug-17 16:<REDACTED>@0.27.3/node_modules/esbuild postinstall$ node install.js
+2026-Aug-17 16:34:24 #15 45.54 .../esbuild@0.27.3/node_modules/esbuild postinstall: Done
+2026-Aug-17 16:34:24 #15 ...
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #12 install apt packages: curl wget
+2026-Aug-17 16:34:24 #12 DONE 72.0s
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #15 pnpm install
+2026-Aug-17 16:34:24 #15 52.49
+2026-Aug-17 16:34:24 #15 52.49 dependencies:
+2026-Aug-17 16:34:24 #15 52.49 + @replit/connectors-sdk 0.4.2
+2026-Aug-17 16:34:24 #15 52.49
+2026-Aug-17 16:34:24 #15 52.49 devDependencies:
+2026-Aug-17 16:34:24 #15 52.49 + prettier 3.9.6
+2026-Aug-17 16:34:24 #15 52.49 + typescript 5.9.3
+2026-Aug-17 16:34:24 #15 52.49
+2026-Aug-17 16:34:24 #15 52.65 . preinstall$ sh -c 'rm -f package-lock.json yarn.lock; case "$npm_config_user_agent" in pnpm/*) ;; *) echo "Use pnpm instead" >&2; exit 1 ;; esac'
+2026-Aug-17 16:34:24 #15 52.68 . preinstall: Done
+2026-Aug-17 16:34:24 #15 52.96 Done in 45.6s using pnpm v10.26.1
+2026-Aug-17 16:34:24 #15 ...
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #16 copy /mise/shims
+2026-Aug-17 16:34:24 #16 DONE 4.6s
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #17 copy /mise/installs
+2026-Aug-17 16:34:24 #17 ...
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #15 pnpm install
+2026-Aug-17 16:34:24 #15 DONE 57.4s
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #18 copy / /app
+2026-Aug-17 16:34:24 #18 DONE 4.9s
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #17 copy /mise/installs
+2026-Aug-17 16:34:24 #17 ...
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #19 copy .
+2026-Aug-17 16:34:24 #19 DONE 4.8s
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #17 copy /mise/installs
+2026-Aug-17 16:34:24 #17 ...
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #20 pnpm run build
+2026-Aug-17 16:34:24 #20 4.966
+2026-Aug-17 16:34:24 #20 4.966 > workspace@0.0.0 build /app
+2026-Aug-17 16:34:24 #20 4.966 > pnpm run typecheck && pnpm -r --if-present run build
+2026-Aug-17 16:34:24 #20 4.966
+2026-Aug-17 16:34:24 #20 ...
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #17 copy /mise/installs
+2026-Aug-17 16:34:24 #17 DONE 15.7s
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #21 copy /usr/local/bin/mise
+2026-Aug-17 16:34:24 #21 DONE 3.6s
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #20 pnpm run build
+2026-Aug-17 16:34:24 #20 6.561
+2026-Aug-17 16:34:24 #20 6.561 > workspace@0.0.0 typecheck /app
+2026-Aug-17 16:34:24 #20 6.561 > pnpm run typecheck:libs && pnpm -r --filter "./artifacts/**" --filter "./scripts" --if-present run typecheck
+2026-Aug-17 16:34:24 #20 6.561
+2026-Aug-17 16:34:24 #20 7.710
+2026-Aug-17 16:34:24 #20 7.710 > workspace@0.0.0 typecheck:libs /app
+2026-Aug-17 16:34:24 #20 7.710 > tsc --build
+2026-Aug-17 16:34:24 #20 7.710
+2026-Aug-17 16:34:24 #20 ...
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #22 copy /etc/mise/config.toml
+2026-Aug-17 16:34:24 #22 DONE 1.0s
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #23 copy /root/.local/state/mise
+2026-Aug-17 16:34:24 #23 DONE 2.5s
+2026-Aug-17 16:34:24 
+2026-Aug-17 16:34:24 #20 pnpm run build
+2026-Aug-17 16:34:24 #20 20.42 Scope: 4 of 9 workspace projects
+2026-Aug-17 16:34:24 #20 20.44 artifacts/api-server typecheck$ tsc -p tsconfig.json --noEmit
+2026-Aug-17 16:34:24 #20 20.44 artifacts/mockup-sandbox typecheck$ tsc -p tsconfig.json --noEmit
+2026-Aug-17 16:34:24 #20 28.25 artifacts/api-server typecheck: Done
+2026-Aug-17 16:34:24 #20 28.26 artifacts/smartisa-ceremony typecheck$ tsc -p tsconfig.json --noEmit
+2026-Aug-17 16:34:24 #20 65.88 artifacts/mockup-sandbox typecheck: Done
+2026-Aug-17 16:34:24 #20 65.89 scripts typecheck$ tsc -p tsconfig.json --noEmit
+2026-Aug-17 16:34:24 #20 66.38 artifacts/smartisa-ceremony typecheck: Done
+2026-Aug-17 16:34:24 #20 69.36 scripts typecheck: Done
+2026-Aug-17 16:34:24 #20 71.01 Scope: 8 of 9 workspace projects
+2026-Aug-17 16:34:24 #20 71.06 artifacts/mockup-sandbox build$ vite build
+2026-Aug-17 16:34:24 #20 72.47 artifacts/mockup-sandbox build: failed to load config from /app/artifacts/mockup-sandbox/vite.config.ts
+2026-Aug-17 16:34:24 #20 72.47 artifacts/mockup-sandbox build: error during build:
+2026-Aug-17 16:34:24 #20 72.48 artifacts/mockup-sandbox build: Error: PORT environment variable is required but was not provided.
+2026-Aug-17 16:34:24 #20 72.48 artifacts/mockup-sandbox build:     at file:///app/artifacts/mockup-sandbox/node_modules/.vite-temp/vite.config.ts.timestamp-1786984459247-b87842cc42528.mjs:145:9
+2026-Aug-17 16:34:24 #20 72.48 artifacts/mockup-sandbox build:     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+2026-Aug-17 16:34:24 #20 72.48 artifacts/mockup-sandbox build:     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+2026-Aug-17 16:34:24 #20 72.49 artifacts/mockup-sandbox build:     at async loadConfigFromBundledFile (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/chunks/config.js:35996:12)
+2026-Aug-17 16:34:24 #20 72.49 artifacts/mockup-sandbox build:     at async bundleAndLoadConfigFile (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/chunks/config.js:35884:17)
+2026-Aug-17 16:34:24 #20 72.49 artifacts/mockup-sandbox build:     at async loadConfigFromFile (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/chunks/config.js:35851:42)
+2026-Aug-17 16:34:24 #20 72.49 artifacts/mockup-sandbox build:     at async resolveConfig (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/chunks/config.js:35500:22)
+2026-Aug-17 16:34:24 #20 72.49 artifacts/mockup-sandbox build:     at async createBuilder (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/chunks/config.js:33955:19)
+2026-Aug-17 16:34:24 #20 72.50 artifacts/mockup-sandbox build:     at async CAC.<anonymous> (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/cli.js:629:10)
+2026-Aug-17 16:34:24 #20 72.54 artifacts/mockup-sandbox build: Failed
+2026-Aug-17 16:34:24 #20 72.57 /app/artifacts/mockup-sandbox:
+2026-Aug-17 16:34:24 #20 72.57  ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/mockup-sandbox@2.0.0 build: `vite build`
+2026-Aug-17 16:34:24 #20 72.57 Exit status 1
+2026-Aug-17 16:34:24 #20 72.69  ELIFECYCLE  Command failed with exit code 1.
+2026-Aug-17 16:34:24 #20 ERROR: process "sh -c pnpm run build" did not complete successfully: exit code: 1
+2026-Aug-17 16:34:24 ------
+2026-Aug-17 16:34:24 > pnpm run build:
+2026-Aug-17 16:34:24 72.49 artifacts/mockup-sandbox build:     at async bundleAndLoadConfigFile (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/chunks/config.js:35884:17)
+2026-Aug-17 16:34:24 72.49 artifacts/mockup-sandbox build:     at async loadConfigFromFile (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/chunks/config.js:35851:42)
+2026-Aug-17 16:34:24 72.49 artifacts/mockup-sandbox build:     at async resolveConfig (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/chunks/config.js:35500:22)
+2026-Aug-17 16:34:24 72.49 artifacts/mockup-sandbox build:     at async createBuilder (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/chunks/config.js:33955:19)
+2026-Aug-17 16:34:24 72.50 artifacts/mockup-sandbox build:     at async CAC.<anonymous> (file:///app/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.12_yaml@2.9.0/node_modules/vite/dist/node/cli.js:629:10)
+2026-Aug-17 16:34:24 72.54 artifacts/mockup-sandbox build: Failed
+2026-Aug-17 16:34:24 72.57 /app/artifacts/mockup-sandbox:
+2026-Aug-17 16:34:24 72.57  ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/mockup-sandbox@2.0.0 build: `vite build`
+2026-Aug-17 16:34:24 72.57 Exit status 1
+2026-Aug-17 16:34:24 72.69  ELIFECYCLE  Command failed with exit code 1.
+2026-Aug-17 16:34:24 ------
+2026-Aug-17 16:34:24 ERROR: failed to build: failed to solve: process "sh -c pnpm run build" did not complete successfully: exit code: 1
+2026-Aug-17 16:34:24 exit status 1
+2026-Aug-17 16:34:24 [DEBUG] Error type: App\Exceptions\DeploymentException
+2026-Aug-17 16:34:24 [DEBUG] Error code: 0
+2026-Aug-17 16:34:24 [DEBUG] Location: /var/www/html/app/Traits/ExecuteRemoteCommand.php:243
+2026-Aug-17 16:34:24 [DEBUG] Stack trace (first 5 lines):
+2026-Aug-17 16:34:24 [DEBUG] #0 /var/www/html/app/Traits/ExecuteRemoteCommand.php(107): App\Jobs\ApplicationDeploymentJob->executeCommandWithProcess()
+2026-Aug-17 16:34:24 [DEBUG] #1 /var/www/html/vendor/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php(275): App\Jobs\ApplicationDeploymentJob->{closure:App\Traits\ExecuteRemoteCommand::execute_remote_command():72}()
+2026-Aug-17 16:34:24 [DEBUG] #2 /var/www/html/app/Traits/ExecuteRemoteCommand.php(72): Illuminate\Support\Collection->each()
+2026-Aug-17 16:34:24 [DEBUG] #3 /var/www/html/app/Jobs/ApplicationDeploymentJob.php(3017): App\Jobs\ApplicationDeploymentJob->execute_remote_command()
+2026-Aug-17 16:34:24 [DEBUG] #4 /var/www/html/app/Jobs/ApplicationDeploymentJob.php(993): App\Jobs\ApplicationDeploymentJob->build_railpack_image()
+2026-Aug-17 16:34:24 ========================================
+2026-Aug-17 16:34:24 Deployment failed. Removing the new version of your application.
+2026-Aug-17 16:34:26 Gracefully shutting down build container: nshysqo6l7e9e6hzlw4u0tzf
+2026-Aug-17 16:34:30 [DEBUG] [CMD]: docker stop --timeout=30 nshysqo6l7e9e6hzlw4u0tzf
+2026-Aug-17 16:34:30 [DEBUG] nshysqo6l7e9e6hzlw4u0tzf

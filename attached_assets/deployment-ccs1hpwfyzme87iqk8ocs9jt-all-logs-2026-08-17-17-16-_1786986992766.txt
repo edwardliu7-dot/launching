@@ -1,0 +1,240 @@
+2026-Aug-17 17:02:48 Docker 29.6.1 with BuildKit and Buildx detected on deployment server (localhost).
+2026-Aug-17 17:02:48 Starting deployment of edwardliu7-dot/launching:main to localhost.
+2026-Aug-17 17:02:48 Preparing container with helper image: docker.io/coollabsio/coolify-helper:1.0.15
+2026-Aug-17 17:02:49 [DEBUG] [CMD]: docker stop --timeout=30 ccs1hpwfyzme87iqk8ocs9jt
+2026-Aug-17 17:02:49 [DEBUG] Error response from daemon: No such container: ccs1hpwfyzme87iqk8ocs9jt
+2026-Aug-17 17:02:52 [DEBUG] [CMD]: docker run -d --network 'coolify' --name ccs1hpwfyzme87iqk8ocs9jt  --rm -v /root/.docker/buildx:/root/.docker/buildx -v /var/run/docker.sock:/var/run/docker.sock docker.io/coollabsio/coolify-helper:1.0.15
+2026-Aug-17 17:02:52 [DEBUG] 046bd8de2db93afc708a47d96285fe27642ee82cf01930a961f5a1b380a8714f
+2026-Aug-17 17:02:57 [DEBUG] [CMD]: docker exec ccs1hpwfyzme87iqk8ocs9jt bash -c 'GIT_SSH_COMMAND="ssh -o ConnectTimeout=30 -p 22 -o Port=22 -o LogLevel=ERROR -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git ls-remote '\''https://x-access-token:<REDACTED>@github.com/edwardliu7-dot/launching.git'\'' '\''refs/heads/main'\'''
+2026-Aug-17 17:02:57 [DEBUG] cab3abced6f78d20e05272973d9bcf9d674c2018	refs/heads/main
+2026-Aug-17 17:02:57 [DEBUG] [CMD]: docker images -q 9x96bf8k1wei43lhvrh7szhb:cab3abced6f78d20e05272973d9bcf9d674c2018 2>/dev/null
+2026-Aug-17 17:02:57 [DEBUG] cd2b8f0d527b
+2026-Aug-17 17:02:57 Build configuration changed. Rebuilding image.
+2026-Aug-17 17:02:58 ----------------------------------------
+2026-Aug-17 17:02:58 Importing edwardliu7-dot/launching:main (commit sha cab3abced6f78d20e05272973d9bcf9d674c2018) to /artifacts/ccs1hpwfyzme87iqk8ocs9jt.
+2026-Aug-17 17:02:58 [DEBUG] [CMD]: docker exec ccs1hpwfyzme87iqk8ocs9jt bash -c 'git -c '\''url.https://x-access-token:<REDACTED>@github.com/.insteadOf=https://github.com/'\'' -c http.version=HTTP/1.1 clone --depth=1 --recurse-submodules --shallow-submodules -b '\''main'\'' '\''https:<REDACTED>@github.com/edwardliu7-dot/launching.git'\'' '\''/artifacts/ccs1hpwfyzme87iqk8ocs9jt'\'' && cd '\''/artifacts/ccs1hpwfyzme87iqk8ocs9jt'\'' && GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git -c '\''url.https://x-access-token:<REDACTED>@github.com/.insteadOf=https://github.com/'\'' -c http.version=HTTP/1.1 fetch --depth=1 origin '\''cab3abced6f78d20e05272973d9bcf9d674c2018'\'' && git -c '\''url.https:<REDACTED>@github.com/.insteadOf=https://github.com/'\'' -c http.version=HTTP/1.1 -c advice.detachedHead=false checkout '\''cab3abced6f78d20e05272973d9bcf9d674c2018'\'' >/dev/null 2>&1 && cd '\''/artifacts/ccs1hpwfyzme87iqk8ocs9jt'\'' && if [ -f .gitmodules ]; then git -c '\''url.https:<REDACTED>@github.com/.insteadOf=https://github.com/'\'' -c http.version=HTTP/1.1 submodule sync && GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git -c '\''url.https:<REDACTED>@github.com/.insteadOf=https://github.com/'\'' -c http.version=HTTP/1.1 submodule update --init --recursive --depth=1; fi && cd '\''/artifacts/ccs1hpwfyzme87iqk8ocs9jt'\'' && GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git -c '\''url.https:<REDACTED>@github.com/.insteadOf=https://github.com/'\'' -c http.version=HTTP/1.1 lfs pull'
+2026-Aug-17 17:<REDACTED>@10.26.1 with Corepack
+2026-Aug-17 17:03:10 [DEBUG] 
+2026-Aug-17 17:03:10 [DEBUG] Packages
+2026-Aug-17 17:03:10 [DEBUG] ──────────
+2026-Aug-17 17:03:10 [DEBUG] node  │  22.23.2  │  railpack default (22)
+2026-Aug-17 17:03:10 [DEBUG] pnpm  │  10.26.1  │  package.json > packageManager (10.26.1)
+2026-Aug-17 17:03:10 [DEBUG] 
+2026-Aug-17 17:03:10 [DEBUG] Steps
+2026-Aug-17 17:03:10 [DEBUG] ──────────
+2026-Aug-17 17:03:10 [DEBUG] ▸ install
+2026-Aug-17 17:03:10 [DEBUG] $ pnpm install
+2026-Aug-17 17:03:10 [DEBUG] 
+2026-Aug-17 17:03:10 [DEBUG] ▸ build
+2026-Aug-17 17:03:10 [DEBUG] $ pnpm run build
+2026-Aug-17 17:03:10 [DEBUG] 
+2026-Aug-17 17:03:10 [DEBUG] Deploy
+2026-Aug-17 17:03:10 [DEBUG] ──────────
+2026-Aug-17 17:03:10 [DEBUG] $ pnpm start
+2026-Aug-17 17:03:10 [DEBUG] [CMD]: docker exec ccs1hpwfyzme87iqk8ocs9jt bash -c 'cat /artifacts/railpack-plan.json'
+2026-Aug-17 17:03:10 [DEBUG] {
+2026-Aug-17 17:03:10 [DEBUG] "$schema": "https://schema.railpack.com",
+2026-Aug-17 17:<REDACTED>@sha256:ba4c430961d9ee3215c64807727a4b11e2198daac31250e9db9eaf9cee4624d6
+2026-Aug-17 17:03:16 [DEBUG] #3 resolve ghcr.io/railwayapp/railpack-frontend:v0.23.0@sha256:ba4c430961d9ee3215c64807727a4b11e2198daac31250e9db9eaf9cee4624d6 0.1s done
+2026-Aug-17 17:03:16 [DEBUG] #3 CACHED
+2026-Aug-17 17:03:17 [DEBUG] #4 load build definition from railpack-plan.json
+2026-Aug-17 17:03:19 [DEBUG] #4 transferring dockerfile: 4.83kB done
+2026-Aug-17 17:03:19 [DEBUG] #4 DONE 1.6s
+2026-Aug-17 17:03:20 [DEBUG] #5 [railpack] secrets hash
+2026-Aug-17 17:03:20 [DEBUG] #5 DONE 0.0s
+2026-Aug-17 17:03:20 [DEBUG] 
+2026-Aug-17 17:03:20 [DEBUG] #6 loading .
+2026-Aug-17 17:03:20 [DEBUG] #6 DONE 0.0s
+2026-Aug-17 17:03:20 [DEBUG] 
+2026-Aug-17 17:03:20 [DEBUG] #7 docker-image://ghcr.io/railwayapp/railpack-builder:mise-2026.3.17
+2026-Aug-17 17:03:20 [DEBUG] #7 resolve ghcr.io/railwayapp/railpack-builder:mise-2026.3.17
+2026-Aug-17 17:03:21 [DEBUG] #7 ...
+2026-Aug-17 17:03:21 [DEBUG] 
+2026-Aug-17 17:03:21 [DEBUG] #8 docker-image://ghcr.io/railwayapp/railpack-runtime:mise-2026.3.17
+2026-Aug-17 17:03:21 [DEBUG] #8 resolve ghcr.io/railwayapp/railpack-runtime:mise-2026.3.17 1.0s done
+2026-Aug-17 17:03:21 [DEBUG] #8 DONE 1.0s
+2026-Aug-17 17:03:21 [DEBUG] #7 docker-image://ghcr.io/railwayapp/railpack-builder:mise-2026.3.17
+2026-Aug-17 17:03:21 [DEBUG] #7 resolve ghcr.io/railwayapp/railpack-builder:mise-2026.3.17 1.2s done
+2026-Aug-17 17:03:21 [DEBUG] #7 DONE 1.2s
+2026-Aug-17 17:03:21 [DEBUG] #6 loading .
+2026-Aug-17 17:03:21 [DEBUG] #6 transferring context:
+2026-Aug-17 17:03:22 [DEBUG] #6 transferring context: 3.67MB 0.2s done
+2026-Aug-17 17:03:22 [DEBUG] #6 DONE 0.6s
+2026-Aug-17 17:03:22 [DEBUG] 
+2026-Aug-17 17:03:22 [DEBUG] #9 mkdir /etc/mise
+2026-Aug-17 17:03:22 [DEBUG] #9 CACHED
+2026-Aug-17 17:03:22 [DEBUG] 
+2026-Aug-17 17:03:22 [DEBUG] #10 create mise config
+2026-Aug-17 17:03:22 [DEBUG] #10 CACHED
+2026-Aug-17 17:03:22 [DEBUG] 
+2026-Aug-17 17:03:22 [DEBUG] #5 [railpack] secrets hash
+2026-Aug-17 17:03:22 [DEBUG] #5 CACHED
+2026-Aug-17 17:03:22 [DEBUG] 
+2026-Aug-17 17:03:22 [DEBUG] #11 install mise packages: node
+2026-Aug-17 17:03:22 [DEBUG] #11 CACHED
+2026-Aug-17 17:03:22 [DEBUG] 
+2026-Aug-17 17:03:22 [DEBUG] #12 copy / /app
+2026-Aug-17 17:03:22 [DEBUG] #12 DONE 0.7s
+2026-Aug-17 17:03:23 [DEBUG] #13 copy .
+2026-Aug-17 17:03:23 [DEBUG] #13 DONE 0.8s
+2026-Aug-17 17:03:23 [DEBUG] #14 pnpm install
+2026-Aug-17 17:03:26 [DEBUG] #14 2.628 ! Corepack is about to download https://registry.npmjs.org/pnpm/-/pnpm-10.26.1.tgz
+2026-Aug-17 17:<REDACTED>@0.27.3/node_modules/esbuild postinstall$ node install.js
+2026-Aug-17 17:03:54 [DEBUG] #14 31.19 .../esbuild@0.27.3/node_modules/esbuild postinstall: Done
+2026-Aug-17 17:04:00 [DEBUG] #14 37.17
+2026-Aug-17 17:04:00 [DEBUG] #14 37.17 dependencies:
+2026-Aug-17 17:04:00 [DEBUG] #14 37.17 + @replit/connectors-sdk 0.4.2
+2026-Aug-17 17:04:00 [DEBUG] #14 37.17
+2026-Aug-17 17:04:00 [DEBUG] #14 37.17 devDependencies:
+2026-Aug-17 17:04:00 [DEBUG] #14 37.17 + prettier 3.9.6
+2026-Aug-17 17:04:00 [DEBUG] #14 37.17 + typescript 5.9.3
+2026-Aug-17 17:04:00 [DEBUG] #14 37.17
+2026-Aug-17 17:04:01 [DEBUG] #14 37.48 . preinstall$ sh -c 'rm -f package-lock.json yarn.lock; case "$npm_config_user_agent" in pnpm/*) ;; *) echo "Use pnpm instead" >&2; exit 1 ;; esac'
+2026-Aug-17 17:04:05 [DEBUG] #14 37.60 . preinstall: Done
+2026-Aug-17 17:04:05 [DEBUG] #14 38.06 Done in 32.8s using pnpm v10.26.1
+2026-Aug-17 17:04:06 [DEBUG] #14 DONE 43.2s
+2026-Aug-17 17:04:07 [DEBUG] #15 copy / /app
+2026-Aug-17 17:04:14 [DEBUG] #15 DONE 7.2s
+2026-Aug-17 17:04:15 [DEBUG] #16 copy .
+2026-Aug-17 17:04:19 [DEBUG] #16 DONE 4.5s
+2026-Aug-17 17:04:19 [DEBUG] #17 pnpm run build
+2026-Aug-17 17:04:23 [DEBUG] #17 3.551
+2026-Aug-17 17:04:23 [DEBUG] #17 3.551 > workspace@0.0.0 build /app
+2026-Aug-17 17:04:23 [DEBUG] #17 3.551 > pnpm run typecheck && pnpm -r --if-present run build
+2026-Aug-17 17:04:23 [DEBUG] #17 3.551
+2026-Aug-17 17:04:24 [DEBUG] #17 4.556
+2026-Aug-17 17:04:24 [DEBUG] #17 4.556 > workspace@0.0.0 typecheck /app
+2026-Aug-17 17:04:24 [DEBUG] #17 4.556 > pnpm run typecheck:libs && pnpm -r --filter "./artifacts/**" --filter "./scripts" --if-present run typecheck
+2026-Aug-17 17:04:24 [DEBUG] #17 4.556
+2026-Aug-17 17:04:25 [DEBUG] #17 5.927
+2026-Aug-17 17:04:25 [DEBUG] #17 5.927 > workspace@0.0.0 typecheck:libs /app
+2026-Aug-17 17:04:25 [DEBUG] #17 5.927 > tsc --build
+2026-Aug-17 17:04:25 [DEBUG] #17 5.927
+2026-Aug-17 17:04:36 [DEBUG] #17 17.07 Scope: 4 of 9 workspace projects
+2026-Aug-17 17:04:37 [DEBUG] #17 17.08 artifacts/api-server typecheck$ tsc -p tsconfig.json --noEmit
+2026-Aug-17 17:04:37 [DEBUG] #17 17.09 artifacts/mockup-sandbox typecheck$ tsc -p tsconfig.json --noEmit
+2026-Aug-17 17:04:42 [DEBUG] #17 23.26 artifacts/api-server typecheck: Done
+2026-Aug-17 17:04:43 [DEBUG] #17 23.26 artifacts/smartisa-ceremony typecheck$ tsc -p tsconfig.json --noEmit
+2026-Aug-17 17:05:28 [DEBUG] #17 68.66 artifacts/mockup-sandbox typecheck: Done
+2026-Aug-17 17:05:32 [DEBUG] #17 68.77 scripts typecheck$ tsc -p tsconfig.json --noEmit
+2026-Aug-17 17:05:32 [DEBUG] #17 71.73 artifacts/smartisa-ceremony typecheck: Done
+2026-Aug-17 17:05:38 [DEBUG] #17 76.78 scripts typecheck: Done
+2026-Aug-17 17:05:38 [DEBUG] #17 78.18 Scope: 8 of 9 workspace projects
+2026-Aug-17 17:05:38 [DEBUG] #17 78.19 artifacts/mockup-sandbox build$ vite build
+2026-Aug-17 17:05:43 [DEBUG] #17 83.38 artifacts/mockup-sandbox build: vite v7.3.6 building client environment for production...
+2026-Aug-17 17:05:43 [DEBUG] #17 83.62 artifacts/mockup-sandbox build: transforming...
+2026-Aug-17 17:05:48 [DEBUG] #17 88.79 artifacts/mockup-sandbox build: ✓ 32 modules transformed.
+2026-Aug-17 17:05:48 [DEBUG] #17 88.97 artifacts/mockup-sandbox build: rendering chunks...
+2026-Aug-17 17:05:48 [DEBUG] 
+2026-Aug-17 17:05:48 [DEBUG] #17 89.14 artifacts/mockup-sandbox build: computing gzip size...
+2026-Aug-17 17:05:49 [DEBUG] #17 89.17 artifacts/mockup-sandbox build: dist/index.html                           4.42 kB │ gzip:  1.23 kB
+2026-Aug-17 17:05:49 [DEBUG] #17 89.17 artifacts/mockup-sandbox build: dist/assets/index-CcUu1pI2.css           89.97 kB │ gzip: 15.02 kB
+2026-Aug-17 17:05:49 [DEBUG] #17 89.18 artifacts/mockup-sandbox build: dist/assets/SmartisaLaunch-Cu_8_hvK.js   13.89 kB │ gzip:  4.94 kB
+2026-Aug-17 17:05:49 [DEBUG] #17 89.18 artifacts/mockup-sandbox build: dist/assets/index-Cfh-a_ix.js           188.97 kB │ gzip: 60.03 kB
+2026-Aug-17 17:05:49 [DEBUG] #17 89.18 artifacts/mockup-sandbox build: ✓ built in 5.70s
+2026-Aug-17 17:05:49 [DEBUG] #17 89.21 artifacts/mockup-sandbox build: Done
+2026-Aug-17 17:05:49 [DEBUG] #17 89.22 artifacts/api-server build$ node ./build.mjs
+2026-Aug-17 17:05:49 [DEBUG] #17 89.22 artifacts/smartisa-ceremony build$ vite build --config vite.config.ts
+2026-Aug-17 17:05:49 [DEBUG] #17 89.93 artifacts/smartisa-ceremony build: vite v7.3.6 building client environment for production...
+2026-Aug-17 17:05:49 [DEBUG] #17 90.07 artifacts/smartisa-ceremony build: transforming...
+2026-Aug-17 17:05:51 [DEBUG] #17 91.51 artifacts/api-server build:   dist/index.mjs                       1.4mb ⚠️
+2026-Aug-17 17:05:51 [DEBUG] #17 91.51 artifacts/api-server build:   dist/pino-worker.mjs               153.4kb
+2026-Aug-17 17:05:51 [DEBUG] #17 91.51 artifacts/api-server build:   dist/pino-file.mjs                 142.0kb
+2026-Aug-17 17:05:51 [DEBUG] #17 91.51 artifacts/api-server build:   dist/pino-pretty.mjs               114.4kb
+2026-Aug-17 17:05:51 [DEBUG] #17 91.51 artifacts/api-server build:   dist/thread-stream-worker.mjs        7.3kb
+2026-Aug-17 17:05:51 [DEBUG] #17 91.51 artifacts/api-server build:   dist/index.mjs.map                   2.1mb
+2026-Aug-17 17:05:51 [DEBUG] #17 91.51 artifacts/api-server build:   dist/pino-worker.mjs.map           256.9kb
+2026-Aug-17 17:05:51 [DEBUG] #17 91.51 artifacts/api-server build:   dist/pino-file.mjs.map             229.0kb
+2026-Aug-17 17:05:51 [DEBUG] #17 91.52 artifacts/api-server build:   dist/pino-pretty.mjs.map           203.6kb
+2026-Aug-17 17:05:51 [DEBUG] #17 91.52 artifacts/api-server build:   dist/thread-stream-worker.mjs.map   12.0kb
+2026-Aug-17 17:05:51 [DEBUG] #17 91.52 artifacts/api-server build: ⚡ Done in 2094ms
+2026-Aug-17 17:05:51 [DEBUG] #17 91.57 artifacts/api-server build: Done
+2026-Aug-17 17:05:52 [DEBUG] #17 92.95 artifacts/smartisa-ceremony build: ✓ 30 modules transformed.
+2026-Aug-17 17:05:53 [DEBUG] #17 93.32 artifacts/smartisa-ceremony build: rendering chunks...
+2026-Aug-17 17:05:53 [DEBUG] #17 93.34 artifacts/smartisa-ceremony build: computing gzip size...
+2026-Aug-17 17:05:53 [DEBUG] #17 93.36 artifacts/smartisa-ceremony build: dist/public/index.html                   1.46 kB │ gzip:  0.56 kB
+2026-Aug-17 17:05:53 [DEBUG] #17 93.36 artifacts/smartisa-ceremony build: dist/public/assets/index-gS5lk2HY.css   71.19 kB │ gzip: 13.49 kB
+2026-Aug-17 17:05:53 [DEBUG] #17 93.36 artifacts/smartisa-ceremony build: dist/public/assets/index-DTLrRlQg.js   194.69 kB │ gzip: 61.95 kB
+2026-Aug-17 17:05:53 [DEBUG] #17 93.36 artifacts/smartisa-ceremony build: ✓ built in 3.40s
+2026-Aug-17 17:05:53 [DEBUG] #17 93.40 artifacts/smartisa-ceremony build: Done
+2026-Aug-17 17:05:55 [DEBUG] #17 DONE 96.0s
+2026-Aug-17 17:07:14 [DEBUG] 
+2026-Aug-17 17:07:14 [DEBUG] #18 install apt packages: curl wget
+2026-Aug-17 17:07:14 [DEBUG] #18 CACHED
+2026-Aug-17 17:07:14 [DEBUG] 
+2026-Aug-17 17:07:14 [DEBUG] #19 copy /mise/shims
+2026-Aug-17 17:07:14 [DEBUG] #19 CACHED
+2026-Aug-17 17:07:14 [DEBUG] 
+2026-Aug-17 17:07:14 [DEBUG] #20 copy /mise/installs
+2026-Aug-17 17:07:14 [DEBUG] #20 CACHED
+2026-Aug-17 17:07:14 [DEBUG] 
+2026-Aug-17 17:07:14 [DEBUG] #21 copy /usr/local/bin/mise
+2026-Aug-17 17:07:14 [DEBUG] #21 CACHED
+2026-Aug-17 17:07:14 [DEBUG] 
+2026-Aug-17 17:07:14 [DEBUG] #22 copy /etc/mise/config.toml
+2026-Aug-17 17:07:14 [DEBUG] #22 CACHED
+2026-Aug-17 17:07:14 [DEBUG] 
+2026-Aug-17 17:07:14 [DEBUG] #23 copy /root/.local/state/mise
+2026-Aug-17 17:07:14 [DEBUG] #23 CACHED
+2026-Aug-17 17:07:14 [DEBUG] 
+2026-Aug-17 17:07:14 [DEBUG] #24 copy /app/node_modules
+2026-Aug-17 17:07:46 [DEBUG] #24 DONE 32.0s
+2026-Aug-17 17:07:46 [DEBUG] #25 copy /root/.cache
+2026-Aug-17 17:07:47 [DEBUG] #25 DONE 1.4s
+2026-Aug-17 17:07:48 [DEBUG] #26 copy /app
+2026-Aug-17 17:07:50 [DEBUG] #26 DONE 2.3s
+2026-Aug-17 17:07:50 [DEBUG] #27 copy /opt/corepack
+2026-Aug-17 17:07:55 [DEBUG] #27 DONE 4.8s
+2026-Aug-17 17:07:55 [DEBUG] #28 copy /app
+2026-Aug-17 17:09:09 [DEBUG] #28 DONE 74.3s
+2026-Aug-17 17:09:09 [DEBUG] #29 exporting to oci image format
+2026-Aug-17 17:09:09 [DEBUG] #29 exporting layers
+2026-Aug-17 17:10:38 [DEBUG] #29 exporting layers 88.4s done
+2026-Aug-17 17:10:38 [DEBUG] #29 exporting manifest sha256:1a4ba9cc56f37d51c578f8fa22bfa09e2f8a55c0b07577744ed4dfa10f3d41cf
+2026-Aug-17 17:10:38 [DEBUG] #29 exporting manifest sha256:1a4ba9cc56f37d51c578f8fa22bfa09e2f8a55c0b07577744ed4dfa10f3d41cf 0.3s done
+2026-Aug-17 17:10:38 [DEBUG] #29 exporting config sha256:8780b1e6671cf42a943c052768866c62aff8784d65ceb2eedbc18acbdc612615
+2026-Aug-17 17:10:38 [DEBUG] #29 exporting config sha256:8780b1e6671cf42a943c052768866c62aff8784d65ceb2eedbc18acbdc612615 0.2s done
+2026-Aug-17 17:10:38 [DEBUG] #29 sending tarball
+2026-Aug-17 17:11:36 [DEBUG] #29 ...
+2026-Aug-17 17:11:36 [DEBUG] 
+2026-Aug-17 17:11:36 [DEBUG] #30 importing to docker
+2026-Aug-17 17:11:36 [DEBUG] #30 DONE 0.0s
+2026-Aug-17 17:11:36 [DEBUG] 
+2026-Aug-17 17:11:36 [DEBUG] #29 exporting to oci image format
+2026-Aug-17 17:11:36 [DEBUG] #29 sending tarball 57.8s done
+2026-Aug-17 17:11:36 [DEBUG] #29 DONE 146.7s
+2026-Aug-17 17:11:40 [DEBUG] Creating .env file with runtime variables for container.
+2026-Aug-17 17:11:43 ----------------------------------------
+2026-Aug-17 17:11:43 Rolling update started.
+2026-Aug-17 17:11:45 [DEBUG] [CMD]: docker exec ccs1hpwfyzme87iqk8ocs9jt bash -c 'COOLIFY_URL='\''https://launching157.10.161.229.sslip.io'\'' COOLIFY_FQDN='\''launching157.10.161.229.sslip.io'\'' COOLIFY_BRANCH='\''main'\'' COOLIFY_RESOURCE_UUID='\''9x96bf8k1wei43lhvrh7szhb'\''  docker compose --project-name 9x96bf8k1wei43lhvrh7szhb --project-directory /artifacts/ccs1hpwfyzme87iqk8ocs9jt -f /artifacts/ccs1hpwfyzme87iqk8ocs9jt/docker-compose.yaml up --build -d'
+2026-Aug-17 17:11:45 [DEBUG] Container 9x96bf8k1wei43lhvrh7szhb-170243431495  Creating
+2026-Aug-17 17:11:51 [DEBUG] 9x96bf8k1wei43lhvrh7szhb-170243431495 Your kernel does not support memory swappiness capabilities or the cgroup is not mounted. Memory swappiness discarded.
+2026-Aug-17 17:11:51 [DEBUG] Container 9x96bf8k1wei43lhvrh7szhb-170243431495  Created
+2026-Aug-17 17:11:51 [DEBUG] Container 9x96bf8k1wei43lhvrh7szhb-170243431495  Starting
+2026-Aug-17 17:11:54 [DEBUG] Container 9x96bf8k1wei43lhvrh7szhb-170243431495  Started
+2026-Aug-17 17:11:54 New container started.
+2026-Aug-17 17:11:54 Waiting for healthcheck to pass on the new container.
+2026-Aug-17 17:11:54 Healthcheck URL (inside the container): GET: https://localhost:5000/
+2026-Aug-17 17:11:54 Waiting for the start period (5 seconds) before starting healthcheck.
+2026-Aug-17 17:11:59 [DEBUG] [CMD]: docker inspect --format='{{json .State.Health.Status}}' 9x96bf8k1wei43lhvrh7szhb-170243431495
+2026-Aug-17 17:11:59 [DEBUG] "unhealthy"
+2026-Aug-17 17:12:01 [DEBUG] [CMD]: docker inspect --format='{{json .State.Health.Log}}' 9x96bf8k1wei43lhvrh7szhb-170243431495
+2026-Aug-17 17:12:01 [DEBUG] []
+2026-Aug-17 17:12:03 Attempt 1 of 10 | Healthcheck status: "unhealthy"
+2026-Aug-17 17:12:03 New container is unhealthy.
+2026-Aug-17 17:12:03 ----------------------------------------
+2026-Aug-17 17:12:03 Container logs:
+2026-Aug-17 17:12:09 [CMD]: docker logs -n 100 9x96bf8k1wei43lhvrh7szhb-170243431495
+2026-Aug-17 17:12:09 ERR_PNPM_NO_SCRIPT_OR_SERVER  Missing script start or file server.js
+2026-Aug-17 17:12:09  ERR_PNPM_NO_SCRIPT_OR_SERVER  Missing script start or file server.js
+2026-Aug-17 17:12:09 ----------------------------------------
+2026-Aug-17 17:12:09 Removing old containers.
+2026-Aug-17 17:12:09 New container is not healthy, rolling back to the old container.
+2026-Aug-17 17:12:17 [DEBUG] [CMD]: docker stop --timeout=30 9x96bf8k1wei43lhvrh7szhb-170243431495
+2026-Aug-17 17:12:17 [DEBUG] 9x96bf8k1wei43lhvrh7szhb-170243431495
+2026-Aug-17 17:12:18 [DEBUG] [CMD]: docker rm -f 9x96bf8k1wei43lhvrh7szhb-170243431495
+2026-Aug-17 17:12:18 [DEBUG] 9x96bf8k1wei43lhvrh7szhb-170243431495
+2026-Aug-17 17:12:18 Rolling update completed.
+2026-Aug-17 17:12:19 Gracefully shutting down build container: ccs1hpwfyzme87iqk8ocs9jt
+2026-Aug-17 17:12:21 [DEBUG] [CMD]: docker stop --timeout=30 ccs1hpwfyzme87iqk8ocs9jt
+2026-Aug-17 17:12:21 [DEBUG] ccs1hpwfyzme87iqk8ocs9jt

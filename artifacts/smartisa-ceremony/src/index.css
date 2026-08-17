@@ -133,6 +133,7 @@ button { font: inherit; }
 .ceremony-stage {
   position: relative;
   z-index: 2;
+  pointer-events: auto;
   display: flex;
   width: min(1120px, 92vw);
   min-height: 100dvh;
@@ -239,6 +240,11 @@ button { font: inherit; }
 }
 .ceremony-launch {
   position: relative;
+  z-index: 1;
+  pointer-events: auto;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
   width: 72%;
   height: 72%;
   border: 1px solid rgba(230, 185, 90, .82);

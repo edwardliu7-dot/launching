@@ -54,26 +54,30 @@ function SmartisaCeremony() {
   }, []);
 
   const sound = useCallback((finale = false) => {
-    const browserWindow = window as typeof window & {
-      webkitAudioContext?: typeof AudioContext;
-    };
-    const AudioContextConstructor = window.AudioContext ?? browserWindow.webkitAudioContext;
-    if (!AudioContextConstructor) return;
-    audioContext.current ??= new AudioContextConstructor();
-    const context = audioContext.current;
-    if (context.state === 'suspended') void context.resume();
-    const now = context.currentTime;
-    const oscillator = context.createOscillator();
-    const gain = context.createGain();
-    oscillator.type = finale ? 'sine' : 'triangle';
-    oscillator.frequency.setValueAtTime(finale ? 110 : 74, now);
-    oscillator.frequency.exponentialRampToValueAtTime(finale ? 880 : 42, now + (finale ? 2.2 : 0.7));
-    gain.gain.setValueAtTime(0.001, now);
-    gain.gain.exponentialRampToValueAtTime(finale ? 0.25 : 0.5, now + 0.02);
-    gain.gain.exponentialRampToValueAtTime(0.001, now + (finale ? 2.6 : 0.9));
-    oscillator.connect(gain).connect(context.destination);
-    oscillator.start(now);
-    oscillator.stop(now + (finale ? 2.7 : 1));
+    try {
+      const browserWindow = window as typeof window & {
+        webkitAudioContext?: typeof AudioContext;
+      };
+      const AudioContextConstructor = window.AudioContext ?? browserWindow.webkitAudioContext;
+      if (!AudioContextConstructor) return;
+      audioContext.current ??= new AudioContextConstructor();
+      const context = audioContext.current;
+      if (context.state === 'suspended') void context.resume();
+      const now = context.currentTime;
+      const oscillator = context.createOscillator();
+      const gain = context.createGain();
+      oscillator.type = finale ? 'sine' : 'triangle';
+      oscillator.frequency.setValueAtTime(finale ? 110 : 74, now);
+      oscillator.frequency.exponentialRampToValueAtTime(finale ? 880 : 42, now + (finale ? 2.2 : 0.7));
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.exponentialRampToValueAtTime(finale ? 0.25 : 0.5, now + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + (finale ? 2.6 : 0.9));
+      oscillator.connect(gain).connect(context.destination);
+      oscillator.start(now);
+      oscillator.stop(now + (finale ? 2.7 : 1));
+    } catch {
+      // Audio is optional; a restricted browser must not block the launch state.
+    }
   }, []);
 
   const reset = useCallback(() => {
@@ -225,7 +229,22 @@ function SmartisaCeremony() {
             <h1 className="ceremony-title" data-testid="text-launch-title">PELUNCURAN RESMI APLIKASI SMARTISA</h1>
             <p className="ceremony-subtitle" data-testid="text-hut-title">HUT KEMERDEKAAN RI KE-81</p>
             <div className="ceremony-launch-wrap">
-              <button className="ceremony-launch" type="button" onClick={launch} aria-label="Touch to launch Smartisa" data-testid="button-launch">
+              <button
+                className="ceremony-launch"
+                type="button"
+                onPointerDown={(event) => {
+                  event.preventDefault();
+                  launch();
+                }}
+                onClick={launch}
+                onKeyDown={(event) => {
+                  if (event.code === 'Space' || event.key === 'Enter') {
+                    event.preventDefault();
+                  }
+                }}
+                aria-label="Touch to launch Smartisa"
+                data-testid="button-launch"
+              >
                 <span>TOUCH<br />TO LAUNCH</span>
                 <small>SENTUH UNTUK MERESMIKAN</small>
               </button>

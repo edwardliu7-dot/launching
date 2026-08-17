@@ -318,12 +318,33 @@ button { font: inherit; }
   font-size: clamp(15px, 2vw, 22px);
   letter-spacing: .08em;
 }
-.ceremony-final-line {
-  margin-top: 38px;
-  color: rgba(248, 246, 239, .5);
+.ceremony-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 42px;
+}
+.ceremony-link {
+  min-width: 138px;
+  padding: 14px 22px;
+  border: 1px solid rgba(230, 185, 90, .72);
+  color: var(--ceremony-white);
   font-family: var(--app-font-mono);
-  font-size: 10px;
-  letter-spacing: .28em;
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-decoration: none;
+  transition: background-color .2s, border-color .2s, color .2s, transform .2s;
+}
+.ceremony-link:hover {
+  border-color: var(--ceremony-white);
+  background: rgba(230, 185, 90, .14);
+  color: var(--ceremony-gold);
+  transform: translateY(-2px);
+}
+.ceremony-link:focus-visible {
+  outline: 2px solid var(--ceremony-white);
+  outline-offset: 4px;
 }
 .ceremony-seal {
   position: relative;
@@ -355,7 +376,8 @@ button { font: inherit; }
   .ceremony-subtitle { margin-bottom: 32px; letter-spacing: .17em; }
   .ceremony-hint { font-size: 8px; letter-spacing: .1em; }
   .ceremony.finale .ceremony-title { font-size: 22vw; letter-spacing: .04em; }
-  .ceremony-final-line { max-width: 90vw; line-height: 1.8; }
+  .ceremony-links { gap: 10px; margin-top: 30px; }
+  .ceremony-link { min-width: 112px; padding: 12px 14px; font-size: 9px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ceremony::after, .ceremony-launch-wrap::before, .ceremony-launch-wrap::after, .ceremony-launch { animation: none; }

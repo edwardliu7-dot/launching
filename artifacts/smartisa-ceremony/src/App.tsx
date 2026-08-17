@@ -260,8 +260,11 @@ function SmartisaCeremony() {
             <div className="ceremony-seal" aria-label="HUT Republik Indonesia ke-81">81<br />RI</div>
             <div className="ceremony-eyebrow">Resmi Diluncurkan</div>
             <h1 className="ceremony-title" data-testid="text-finale-brand">SMARTISA</h1>
-            <p className="ceremony-subtitle" data-testid="text-finale-tagline">Solusi Cerdas untuk Indonesia Maju</p>
-            <div className="ceremony-final-line">DIRGAHAYU REPUBLIK INDONESIA &nbsp;·&nbsp; 17 AGUSTUS 2026</div>
+            <nav className="ceremony-links" aria-label="Aplikasi Smartisa">
+              <a className="ceremony-link" href="https://y4e6icv3cej4ax65idvhusde.157.10.161.229.sslip.io/" target="_blank" rel="noreferrer">SMARTISA</a>
+              <a className="ceremony-link" href="https://nswzqjz1jnr821kuh3s9aji1.157.10.161.229.sslip.io/" target="_blank" rel="noreferrer">BLP</a>
+              <a className="ceremony-link" href="https://sfptjjfqgqidt4736qzont0l.157.10.161.229.sslip.io/" target="_blank" rel="noreferrer">GuruEOB5</a>
+            </nav>
           </>
         )}
       </section>

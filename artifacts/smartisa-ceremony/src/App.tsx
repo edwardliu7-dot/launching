@@ -257,7 +257,7 @@ function SmartisaCeremony() {
         )}
         {state === 'finale' && (
           <>
-            <div className="ceremony-seal" aria-label="HUT Republik Indonesia ke-81">81<br />RI</div>
+            <img className="ceremony-logo" src="/smartisa-logo.png" alt="Logo Smartisa" />
             <div className="ceremony-eyebrow">Resmi Diluncurkan</div>
             <h1 className="ceremony-title" data-testid="text-finale-brand">SMARTISA</h1>
             <nav className="ceremony-links" aria-label="Aplikasi Smartisa">

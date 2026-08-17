@@ -346,26 +346,17 @@ button { font: inherit; }
   outline: 2px solid var(--ceremony-white);
   outline-offset: 4px;
 }
-.ceremony-seal {
+.ceremony-logo {
   position: relative;
-  display: grid;
-  width: 54px;
-  height: 54px;
+  display: block;
+  width: 86px;
+  height: 86px;
   margin-bottom: 26px;
-  border: 1px solid var(--ceremony-gold);
+  border: 1px solid rgba(230, 185, 90, .72);
   border-radius: 50%;
-  place-items: center;
-  color: var(--ceremony-gold);
-  font-family: var(--app-font-mono);
-  font-size: 9px;
-  letter-spacing: .08em;
-}
-.ceremony-seal::before {
-  position: absolute;
-  inset: 5px;
-  border: 1px solid rgba(230, 185, 90, .35);
-  border-radius: 50%;
-  content: '';
+  background: var(--ceremony-white);
+  box-shadow: 0 0 26px rgba(230, 185, 90, .2);
+  object-fit: contain;
 }
 .ceremony.countdown .ceremony-launch-wrap { display: none; }
 @media (max-width: 600px) {

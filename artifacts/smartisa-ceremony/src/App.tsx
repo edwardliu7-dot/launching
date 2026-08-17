@@ -139,10 +139,6 @@ function SmartisaCeremony() {
 
   useEffect(() => {
     const keyHandler = (event: KeyboardEvent) => {
-      if (event.code === 'Space') {
-        event.preventDefault();
-        launch();
-      }
       if (event.key.toLowerCase() === 'r') reset();
     };
     window.addEventListener('keydown', keyHandler);
@@ -234,7 +230,6 @@ function SmartisaCeremony() {
                 <small>SENTUH UNTUK MERESMIKAN</small>
               </button>
             </div>
-            <p className="ceremony-hint">TAP CONTROL &nbsp;·&nbsp; PRESS <b className="ceremony-kbd">SPACE</b> TO ACTIVATE</p>
           </>
         )}
         {state === 'countdown' && (

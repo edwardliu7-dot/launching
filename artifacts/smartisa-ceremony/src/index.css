@@ -1,0 +1,357 @@
+@import 'tailwindcss';
+
+:root {
+  --background: 0 0% 5%;
+  --foreground: 42 31% 94%;
+  --border: 42 45% 45%;
+  --card: 0 0% 7%;
+  --card-foreground: 42 31% 94%;
+  --card-border: 42 45% 45%;
+  --sidebar: 0 0% 5%;
+  --sidebar-foreground: 42 31% 94%;
+  --sidebar-border: 42 45% 45%;
+  --sidebar-primary: 355 78% 47%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 42 62% 63%;
+  --sidebar-accent-foreground: 0 0% 7%;
+  --sidebar-ring: 42 62% 63%;
+  --popover: 0 0% 9%;
+  --popover-foreground: 42 31% 94%;
+  --popover-border: 42 45% 45%;
+  --primary: 355 78% 47%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 42 62% 63%;
+  --secondary-foreground: 0 0% 7%;
+  --muted: 0 0% 22%;
+  --muted-foreground: 42 13% 65%;
+  --accent: 42 62% 63%;
+  --accent-foreground: 0 0% 7%;
+  --destructive: 355 78% 47%;
+  --destructive-foreground: 0 0% 100%;
+  --input: 0 0% 22%;
+  --ring: 42 62% 63%;
+  --chart-1: 355 78% 47%;
+  --chart-2: 42 62% 63%;
+  --chart-3: 42 31% 94%;
+  --chart-4: 0 0% 22%;
+  --chart-5: 355 60% 35%;
+  --app-font-sans: 'Avenir Next', 'Century Gothic', 'Trebuchet MS', sans-serif;
+  --app-font-serif: 'Iowan Old Style', 'Baskerville', Georgia, serif;
+  --app-font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --radius: 0.5rem;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { min-height: 100%; margin: 0; }
+body {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--app-font-sans);
+  text-rendering: optimizeLegibility;
+}
+button { font: inherit; }
+
+@keyframes ceremony-breathe {
+  0%, 100% { transform: scale(.98); opacity: .76; }
+  50% { transform: scale(1.04); opacity: 1; }
+}
+@keyframes ceremony-ring {
+  from { transform: scale(.65); opacity: .82; }
+  to { transform: scale(1.7); opacity: 0; }
+}
+@keyframes ceremony-reveal {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes ceremony-rise {
+  from { opacity: 0; transform: translateY(35px) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes ceremony-scan {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100vh); }
+}
+@keyframes ceremony-orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.ceremony {
+  --ceremony-red: #d71920;
+  --ceremony-red-deep: #450a10;
+  --ceremony-gold: #e6b95a;
+  --ceremony-white: #f8f6ef;
+  position: relative;
+  display: flex;
+  min-height: 100dvh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(128, 10, 19, .27), transparent 54%),
+    radial-gradient(ellipse at 50% 105%, rgba(230, 185, 90, .09), transparent 48%),
+    #0d0d11;
+  color: var(--ceremony-white);
+  cursor: default;
+}
+.ceremony::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(120deg, rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(30deg, rgba(215,25,32,.025) 1px, transparent 1px);
+  background-size: 84px 84px, 126px 126px;
+  content: '';
+  opacity: .74;
+  pointer-events: none;
+}
+.ceremony::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ceremony-gold), transparent);
+  content: '';
+  opacity: .18;
+  animation: ceremony-scan 6s linear infinite;
+  pointer-events: none;
+}
+.ceremony.flashed {
+  background: #f6eee3;
+  transition: background .08s ease-out;
+}
+.ceremony.flashed > * { opacity: 0; }
+.ceremony-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.ceremony-stage {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: min(1120px, 92vw);
+  min-height: 100dvh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 44px 0;
+  text-align: center;
+}
+.ceremony-topline {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  color: rgba(248, 246, 239, .56);
+  font-family: var(--app-font-mono);
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+.ceremony-mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ceremony-gold);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.ceremony-mark i {
+  display: block;
+  width: 9px;
+  height: 9px;
+  flex: 0 0 auto;
+  background: var(--ceremony-red);
+  box-shadow: 0 0 16px rgba(215, 25, 32, .72);
+  transform: rotate(45deg);
+}
+.ceremony-replay {
+  appearance: none;
+  border: 1px solid rgba(230, 185, 90, .42);
+  padding: 10px 14px;
+  background: transparent;
+  color: var(--ceremony-gold);
+  cursor: pointer;
+  font-family: var(--app-font-mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: background .25s ease, border-color .25s ease, transform .2s ease;
+}
+.ceremony-replay:hover, .ceremony-replay:focus-visible {
+  border-color: var(--ceremony-gold);
+  background: rgba(230, 185, 90, .12);
+}
+.ceremony-replay:active { transform: translateY(1px); }
+.ceremony-replay:focus-visible, .ceremony-launch:focus-visible { outline: 2px solid var(--ceremony-white); outline-offset: 5px; }
+.ceremony-eyebrow {
+  margin-bottom: 18px;
+  color: var(--ceremony-gold);
+  animation: ceremony-reveal .8s both;
+  font-family: var(--app-font-mono);
+  font-size: 11px;
+  letter-spacing: .4em;
+}
+.ceremony-title {
+  margin: 0;
+  animation: ceremony-reveal .8s .12s both;
+  font-family: var(--app-font-serif);
+  font-size: clamp(28px, 4.5vw, 58px);
+  font-weight: 500;
+  letter-spacing: .02em;
+}
+.ceremony-subtitle {
+  margin: 16px 0 44px;
+  color: rgba(248, 246, 239, .54);
+  animation: ceremony-reveal .8s .24s both;
+  font-family: var(--app-font-mono);
+  font-size: 12px;
+  letter-spacing: .34em;
+}
+.ceremony-launch-wrap {
+  position: relative;
+  display: grid;
+  width: min(290px, 68vw);
+  height: min(290px, 68vw);
+  place-items: center;
+}
+.ceremony-launch-wrap::before, .ceremony-launch-wrap::after {
+  position: absolute;
+  inset: 4%;
+  border: 1px solid rgba(230, 185, 90, .3);
+  border-radius: 50%;
+  content: '';
+  animation: ceremony-ring 3s ease-out infinite;
+}
+.ceremony-launch-wrap::after {
+  inset: -11%;
+  animation-delay: 1.1s;
+  opacity: .4;
+}
+.ceremony-launch {
+  position: relative;
+  width: 72%;
+  height: 72%;
+  border: 1px solid rgba(230, 185, 90, .82);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 42%, #ed2830 0, #aa1019 35%, #450a10 72%, #150c0f 100%);
+  box-shadow: inset 0 0 35px rgba(255, 210, 135, .25), 0 0 60px rgba(215, 25, 32, .25);
+  color: var(--ceremony-white);
+  cursor: pointer;
+  animation: ceremony-breathe 2.8s ease-in-out infinite;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.ceremony-launch:hover {
+  box-shadow: inset 0 0 35px rgba(255, 210, 135, .35), 0 0 85px rgba(215, 25, 32, .5);
+  transform: scale(1.04);
+}
+.ceremony-launch:active { transform: scale(.96); }
+.ceremony-launch span {
+  display: block;
+  font-family: var(--app-font-mono);
+  font-size: clamp(15px, 2vw, 22px);
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+.ceremony-launch small {
+  display: block;
+  margin-top: 12px;
+  color: #f5d99a;
+  font-size: 9px;
+  letter-spacing: .16em;
+}
+.ceremony-hint {
+  margin-top: 40px;
+  color: rgba(248, 246, 239, .48);
+  animation: ceremony-reveal 1s .6s both;
+  font-family: var(--app-font-mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+}
+.ceremony-kbd {
+  border: 1px solid rgba(248, 246, 239, .35);
+  padding: 4px 7px;
+  color: var(--ceremony-white);
+}
+.ceremony-count {
+  color: var(--ceremony-gold);
+  animation: ceremony-rise .5s both;
+  font-family: var(--app-font-serif);
+  font-size: clamp(120px, 22vw, 260px);
+  line-height: 1;
+}
+.ceremony-count-label {
+  margin-top: 20px;
+  color: var(--ceremony-white);
+  font-family: var(--app-font-mono);
+  font-size: 10px;
+  letter-spacing: .38em;
+}
+.ceremony.finale .ceremony-stage { animation: ceremony-rise 1.2s both; }
+.ceremony.finale .ceremony-eyebrow { color: var(--ceremony-red); }
+.ceremony.finale .ceremony-title {
+  color: var(--ceremony-white);
+  font-size: clamp(74px, 15vw, 180px);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-shadow: 0 0 35px rgba(230, 185, 90, .3);
+}
+.ceremony.finale .ceremony-subtitle {
+  margin-bottom: 0;
+  color: var(--ceremony-gold);
+  font-family: var(--app-font-sans);
+  font-size: clamp(15px, 2vw, 22px);
+  letter-spacing: .08em;
+}
+.ceremony-final-line {
+  margin-top: 38px;
+  color: rgba(248, 246, 239, .5);
+  font-family: var(--app-font-mono);
+  font-size: 10px;
+  letter-spacing: .28em;
+}
+.ceremony-seal {
+  position: relative;
+  display: grid;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 26px;
+  border: 1px solid var(--ceremony-gold);
+  border-radius: 50%;
+  place-items: center;
+  color: var(--ceremony-gold);
+  font-family: var(--app-font-mono);
+  font-size: 9px;
+  letter-spacing: .08em;
+}
+.ceremony-seal::before {
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(230, 185, 90, .35);
+  border-radius: 50%;
+  content: '';
+}
+.ceremony.countdown .ceremony-launch-wrap { display: none; }
+@media (max-width: 600px) {
+  .ceremony-stage { width: 88vw; padding-top: 58px; }
+  .ceremony-topline { top: 18px; font-size: 8px; }
+  .ceremony-mark { font-size: 9px; }
+  .ceremony-replay { padding: 8px 9px; font-size: 8px; }
+  .ceremony-subtitle { margin-bottom: 32px; letter-spacing: .17em; }
+  .ceremony-hint { font-size: 8px; letter-spacing: .1em; }
+  .ceremony.finale .ceremony-title { font-size: 22vw; letter-spacing: .04em; }
+  .ceremony-final-line { max-width: 90vw; line-height: 1.8; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ceremony::after, .ceremony-launch-wrap::before, .ceremony-launch-wrap::after, .ceremony-launch { animation: none; }
+  .ceremony-title, .ceremony-eyebrow, .ceremony-subtitle, .ceremony-hint, .ceremony-count, .ceremony-stage { animation: none; }
+}

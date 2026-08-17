@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Smartisa Launch Ceremony"
+description = "A fullscreen interactive ceremony control for the official Smartisa launch during HUT Kemerdekaan Republik Indonesia ke-81, with a standby screen, cinematic launch sequence, celebration effects, and replay controls."
+version = "1.0.0"
+id = "artifacts/smartisa-ceremony"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24416
+
+[services.development]
+run = "pnpm --filter @workspace/smartisa-ceremony run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/smartisa-ceremony", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/smartisa-ceremony/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24416"
+BASE_PATH = "/"
